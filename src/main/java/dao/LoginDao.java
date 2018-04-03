@@ -29,7 +29,6 @@ public class LoginDao {
         }
 
         return status;*/
-
         return true;
     }
 }
