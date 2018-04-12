@@ -11,9 +11,46 @@
 <head>
     <title>Login Page</title>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href="CSS/signin.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript">
+        var delayTimer;
+        function doSearch(text) {
+            clearTimeout(delayTimer);
+            delayTimer = setTimeout(function() {
+                $.ajax({
+                    type: "post",
+                    data: text,
+                    success: function (msg) {
+                        $('#output').append(msg);
+                    },
+                    failure: function (msg) {
+                        $('#output').append(msg);
+                    }
+                })
+            }, 1000); // Will do the ajax stuff after 1000 ms, or 1 s
+        }
+
+
+
+        /*$(document).ready(function() {
+            $('#call').click(function ()
+            {
+                $.ajax({
+                    type: "post",
+                    url: "testme", //this is my servlet
+                    data: "input=" +$('#ip').val()+"&output="+$('#op').val(),
+                    success: function(msg){
+                        $('#output').append(msg);
+                    }
+                });
+            });
+
+        });*/
+    </script>
 </head>
 
 <body class="text-center">
@@ -21,7 +58,7 @@
     <img class="mb-4" src="https://shift8-stardothostingin.netdna-ssl.com/wp-content/uploads/2014/11/ser02.png" alt="" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal">Connectez-vous, s'il vous plaît</h1>
     <label for="inputLogin" class="sr-only">Nom d'utilisateur</label>
-    <input type="text" id="inputLogin" class="form-control" placeholder="Utilisateur" name="login" required autofocus>
+    <input type="text" id="inputLogin" class="form-control" placeholder="Utilisateur" name="login" onkeyup="doSearch(this.value)" required autofocus>
     <label for="inputPassword" class="sr-only">Mot de passe</label>
     <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" name="password" required>
     <div class="checkbox mb-3">

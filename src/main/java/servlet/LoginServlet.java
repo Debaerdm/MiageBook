@@ -5,6 +5,7 @@ import dao.LoginDao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -24,12 +25,12 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("currentSessionUser",loginBean);
                 session.setMaxInactiveInterval(30*60);
 
-                resp.sendRedirect("myindex.jsp");
+                resp.sendRedirect("/myindex.jsp");
             } else {
-                //resp.sendRedirect("invalidLogin.jsp");
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("login.jsp");
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.jsp");
                 PrintWriter out = resp.getWriter();
-                out.println("<font color=red>Either user name or password is wrong.</font>");
+                out.println("<div class=\"alert alert-danger fade in\">\n" +
+                        " <strong> Danger ! </strong> Login ou mot de passe incorrect.\n </div>");
                 rd.include(req, resp);
             }
         } catch (Throwable throwable) {

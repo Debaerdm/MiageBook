@@ -1,16 +1,7 @@
 
-body {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    background-color: #f0f3f5;
-}
 /*==============================*/
 /*====== siderbar user profile =====*/
 /*==============================*/
-.nav>li>a.userdd {
-    padding: 5px 15px
-}
-
 .userprofile {
     width: 100%;
     float: left;
@@ -224,8 +215,6 @@ body {
     border-radius: 0;
     border-color: #e1eaef;
 }
-
-
 
 .btn-circle {
     width: 30px;

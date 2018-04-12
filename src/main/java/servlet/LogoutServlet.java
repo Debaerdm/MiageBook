@@ -24,6 +24,6 @@ public class LogoutServlet extends HttpServlet {
         if(!session.isNew()){
             session.invalidate();
         }
-        resp.sendRedirect("login.jsp");
+        resp.sendRedirect("/login.jsp");
     }
 }

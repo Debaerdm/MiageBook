@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="MiageBook:war exploded">
-    <output-path>$PROJECT_DIR$/target/MiageBook-1.0-SNAPSHOT</output-path>
+    <output-path />
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -35,6 +35,7 @@
           <element id="library" level="project" name="Maven: org.glassfish.jersey.containers:jersey-container-servlet-core:2.26" />
           <element id="library" level="project" name="Maven: org.glassfish.jersey.containers:jersey-container-servlet:2.26" />
           <element id="library" level="project" name="Maven: org.glassfish.jersey.media:jersey-media-sse:2.26" />
+          <element id="library" level="project" name="Maven: org.xerial:sqlite-jdbc:3.21.0.1" />
         </element>
       </element>
       <element id="directory" name="META-INF">

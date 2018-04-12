@@ -13,6 +13,6 @@ html, body {
     margin: 0 auto -42px;
 }
 
-.card-footer, .push {
+.panel-footer, .push {
     height: 42px;
 }
