@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -69,5 +71,29 @@ public class LoginDao {
         }
 
         return status;
+    }
+
+    public static List<LoginBean> getAllUsers() {
+        List<LoginBean> beanList = new ArrayList<>();
+
+        try {
+            Connection con = ConnectionProvider.getCon();
+
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM utilisateur");
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                LoginBean loginBean = new LoginBean();
+                loginBean.setLogin(rs.getString(1));
+                loginBean.setNom(rs.getString(3));
+                loginBean.setPrenom(rs.getString(4));
+                loginBean.setEmail(rs.getString(5));
+
+                beanList.add(loginBean);
+            }
+        } catch (Exception ignored) {}
+
+        return beanList;
     }
 }

@@ -7,29 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e71ee24-68e1-4ad1-9d7c-5d684aec16f6" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/MiageBook_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/MiageBook_war_exploded.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MiageBook.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MiageBook.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressource/apache-tomcat-8.5.29/webapps/ROOT/CSS/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/ressource/apache-tomcat-8.5.29/webapps/ROOT/CSS/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressource/apache-tomcat-8.5.29/webapps/ROOT/CSS/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/ressource/apache-tomcat-8.5.29/webapps/ROOT/CSS/profile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressource/apache-tomcat-8.5.29/webapps/ROOT/inscription.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/ressource/apache-tomcat-8.5.29/webapps/ROOT/inscription.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ressource/apache-tomcat-8.5.29/webapps/ROOT/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/ressource/apache-tomcat-8.5.29/webapps/ROOT/login.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ressource/apache-tomcat-8.5.29/webapps/ROOT/myindex.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/ressource/apache-tomcat-8.5.29/webapps/ROOT/myindex.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressource/apache-tomcat-8.5.29/webapps/ROOT/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/ressource/apache-tomcat-8.5.29/webapps/ROOT/profile.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bean/LoginBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bean/LoginBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ApplicationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ApplicationConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/LoginDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/LoginDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/Provider/ConnectionProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/Provider/ConnectionProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/Provider/Provider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/Provider/Provider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/InscriptionServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/InscriptionServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/LoginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/LogoutServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/LogoutServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/CSS/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/CSS/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/CSS/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/CSS/profile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/inscription.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/inscription.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rest/MyResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rest/MyResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/myindex.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/myindex.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/profile.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -64,47 +48,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="footer.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/footer.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="7" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/CSS/index.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConnectionProvider.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dao/Provider/ConnectionProvider.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="LoginDao.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dao/LoginDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+            <state relative-caret-position="222">
+              <caret line="75" column="18" selection-start-line="75" selection-start-column="18" selection-end-line="75" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginServlet.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LoginServlet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/servlet/LoginServlet.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="480">
-              <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+              <caret line="40" selection-start-line="40" selection-end-line="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyResource.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/rest/MyResource.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="27" column="1" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#520#521#0" expanded="true" />
+                <element signature="e#552#553#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ApplicationConfig.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ApplicationConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="3" column="26" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -130,8 +110,17 @@
       <file leaf-file-name="login.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/login.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="49" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
+            <state relative-caret-position="163">
+              <caret line="30" column="47" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="myindex.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/myindex.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="81">
+              <caret line="6" column="93" selection-start-line="6" selection-start-column="93" selection-end-line="6" selection-end-column="93" />
             </state>
           </provider>
         </entry>
@@ -179,7 +168,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/TAGS/page.tag" />
         <option value="$PROJECT_DIR$/src/main/java/LoginServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/servlet/SimpleServlet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/rest/MyResource.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/JSP/myindex.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/JSP/profile.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/JSP/userLogged.jsp" />
@@ -207,12 +195,14 @@
         <option value="$PROJECT_DIR$/src/main/webapp/profile.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/inscription.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/CSS/index.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/myindex.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/footer.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/login.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/dao/LoginDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/servlet/InscriptionServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/servlet/LoginServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ApplicationConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dao/LoginDao.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/myindex.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/rest/MyResource.java" />
       </list>
     </option>
   </component>
@@ -257,17 +247,13 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="MiageBook" type="b2602c69:ProjectViewProjectNode" />
               <item name="MiageBook" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MiageBook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MiageBook" type="462c0819:PsiDirectoryNode" />
-              <item name="ressource" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MiageBook" type="b2602c69:ProjectViewProjectNode" />
@@ -286,6 +272,22 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MiageBook" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MiageBook" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MiageBook" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MiageBook" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="rest" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MiageBook" type="b2602c69:ProjectViewProjectNode" />
@@ -330,9 +332,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -526,11 +527,12 @@
       <workItem from="1522917221217" duration="4128000" />
       <workItem from="1522928232378" duration="1835000" />
       <workItem from="1523437659502" duration="226000" />
+      <workItem from="1523532934825" duration="4702000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34416000" />
+    <option name="totallyTimeSpent" value="39118000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -559,6 +561,7 @@
       <window_info id="UI Designer" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32958034" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32958034" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="7" weight="0.32958034" />
@@ -571,7 +574,6 @@
       <window_info id="Web" order="2" side_tool="true" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32958034" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -676,13 +678,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/JS/bootstrap.js" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/TAGS/page.tag" />
     <entry file="file://$PROJECT_DIR$/src/main/java/servlet/SimpleServlet.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/ApplicationConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0-sources.jar!/javax/servlet/ServletRequest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="241">
@@ -694,13 +689,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="82" column="16" selection-start-line="82" selection-start-column="16" selection-end-line="82" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/rest/MyResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -826,13 +814,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/myindex.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="130" selection-start-line="27" selection-start-column="130" selection-end-line="27" selection-end-column="130" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dao/Provider/Provider.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -842,7 +823,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dao/Provider/ConnectionProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
+        <state relative-caret-position="330">
           <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
         </state>
       </provider>
@@ -882,27 +863,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="49" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/LoginDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/servlet/InscriptionServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/servlet/LogoutServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -920,7 +880,54 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/servlet/LoginServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ApplicationConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="3" column="26" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/LoginDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="75" column="18" selection-start-line="75" selection-start-column="18" selection-end-line="75" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="30" column="47" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/servlet/InscriptionServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/rest/MyResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="1" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#520#521#0" expanded="true" />
+            <element signature="e#552#553#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/myindex.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="6" column="93" selection-start-line="6" selection-start-column="93" selection-end-line="6" selection-end-column="93" />
         </state>
       </provider>
     </entry>

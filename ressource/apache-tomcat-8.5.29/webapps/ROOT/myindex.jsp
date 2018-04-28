@@ -9,6 +9,34 @@
         <link href="CSS/index.css" rel="stylesheet" type="text/css">
         <link href="CSS/miageNav.css" rel="stylesheet" type="text/css">
 
+        <script>
+            $(document).ready(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: '/resource/myresource',
+                    dataType: 'json',
+                    success: function (data) {
+                        $.each(data, function(index, element) {
+                            $('#users').append($('<div>', {
+                                text : element.name
+                            }));
+                        });
+                    }
+                });
+
+
+
+                /*$.getJSON({
+                    url: "/resource/myresource",
+                    success: function(copy_html, status) {
+                        if (status === 200) {
+                            $("#users").html(copy_html);
+                        }
+                    }
+                })*/
+            })
+        </script>
+
         <title>MiageBook</title>
     </head>
     <%@include file="header.jsp"%>
@@ -23,10 +51,9 @@
 
         <div class="container">
             <h1> Bienvenue sur MiageBook </h1>
-            <p> 
-                Projet de CAR réalisé par : Dupriez Alexandre et De Baerdemaeker Mathieu !
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBv1sjMLGASVkWL2cU0YtIXPVyyLwPwHGrGniqnAUwlyqoep37">
-            </p>
+            <p>Projet de CAR réalisé par : Dupriez Alexandre et De Baerdemaeker Mathieu !</p>
+
+            <div id="users"></div>
         </div>
     </body>
     <%@include file="footer.jsp"%>
