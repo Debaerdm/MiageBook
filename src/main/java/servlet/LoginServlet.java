@@ -5,7 +5,6 @@ import dao.LoginDao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,14 +14,11 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            LoginBean loginBean = new LoginBean();
+            LoginBean bean;
 
-            loginBean.setLogin(req.getParameter("login"));
-            loginBean.setPassword(req.getParameter("password"));
-
-            if (LoginDao.validate(loginBean)) {
+            if ((bean = LoginDao.validate(req.getParameter("login"), req.getParameter("password"))) != null) {
                 HttpSession session = req.getSession(true);
-                session.setAttribute("currentSessionUser",loginBean);
+                session.setAttribute("currentSessionUser", bean);
                 session.setMaxInactiveInterval(30*60);
 
                 resp.sendRedirect("/myindex.jsp");

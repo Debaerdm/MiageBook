@@ -1,17 +1,20 @@
 package rest;
 
+import bean.LoginBean;
 import dao.LoginDao;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 /**
  * Root resource (exposed at "myresource" path)
  */
-@Path("myresource")
+@Path("/api")
 public class MyResource {
 
     /**
@@ -22,7 +25,10 @@ public class MyResource {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @Path("allusers")
     public Response getAllUsers() {
-        return Response.status(200).entity(LoginDao.getAllUsers()).build();
+        List<LoginBean> loginBeanList = LoginDao.getAllUsers();
+        GenericEntity<List<LoginBean>> entity = new GenericEntity<List<LoginBean>>(loginBeanList){};
+        return Response.ok(entity).build();
     }
 }

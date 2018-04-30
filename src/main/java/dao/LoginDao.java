@@ -2,6 +2,7 @@ package dao;
 
 import bean.LoginBean;
 import dao.Provider.ConnectionProvider;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -31,24 +32,32 @@ public class LoginDao {
         return exist;
     }
 
-    public static boolean validate(LoginBean bean){
-        boolean status = false;
+    public static LoginBean validate(String login, String password){
+        LoginBean bean = null;
 
         try {
             Connection con = ConnectionProvider.getCon();
 
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM utilisateur WHERE login = ? AND password = ?");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM utilisateur WHERE login = ?");
 
-            ps.setString(1, bean.getLogin());
-            ps.setString(2, bean.getPassword());
+            ps.setString(1, login);
 
             ResultSet rs = ps.executeQuery();
-            status = rs.next();
+            if(rs.next()) {
+                if(BCrypt.checkpw(password, rs.getString(2))) {
+                    bean = new LoginBean();
+
+                    bean.setLogin(rs.getString(1));
+                    bean.setNom(rs.getString(3));
+                    bean.setPrenom(rs.getString(4));
+                    bean.setEmail(rs.getString(5));
+                }
+            }
         } catch(Exception e){
             Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, "[LOGIN DAO] VALIDATION ERROR DATA", e);
         }
 
-        return status;
+        return bean;
     }
 
     public static boolean inscription(LoginBean bean){
