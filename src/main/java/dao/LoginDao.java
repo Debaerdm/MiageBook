@@ -66,13 +66,14 @@ public class LoginDao {
         try {
             Connection con = ConnectionProvider.getCon();
 
-            PreparedStatement ps = con.prepareStatement("insert into utilisateur values(?,?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("insert into utilisateur values(?,?,?,?,?,?)");
 
             ps.setString(1, bean.getLogin());
             ps.setString(2, bean.getPassword());
             ps.setString(3, bean.getNom());
             ps.setString(4, bean.getPrenom());
             ps.setString(5, bean.getEmail());
+            ps.setInt(6, bean.getConnecter());
 
             status = (ps.executeUpdate() > 0);
         } catch (Exception e) {
@@ -88,21 +89,43 @@ public class LoginDao {
         try {
             Connection con = ConnectionProvider.getCon();
 
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM utilisateur");
+            PreparedStatement ps = con.prepareStatement("SELECT nom, prenom, connecter FROM utilisateur");
 
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 LoginBean loginBean = new LoginBean();
-                loginBean.setLogin(rs.getString(1));
-                loginBean.setNom(rs.getString(3));
-                loginBean.setPrenom(rs.getString(4));
-                loginBean.setEmail(rs.getString(5));
+                loginBean.setNom(rs.getString(1));
+                loginBean.setPrenom(rs.getString(2));
+                loginBean.setConnecter(rs.getInt(3));
 
                 beanList.add(loginBean);
             }
         } catch (Exception ignored) {}
 
         return beanList;
+    }
+
+    public static boolean connecter(String login) {
+        return isStatus(login, "update utilisateur set connecter = 1 where login = ?");
+    }
+
+    public static boolean disconnecter(String login) {
+        return isStatus(login, "update utilisateur set connecter = 0 where login = ?");
+    }
+
+    private static boolean isStatus(String login, String s) {
+        boolean status = false;
+        try {
+            Connection con = ConnectionProvider.getCon();
+
+            PreparedStatement ps = con.prepareStatement(s);
+
+            ps.setString(1, login);
+
+            status = (ps.executeUpdate() > 0);
+        } catch (Exception ignored) {}
+
+        return status;
     }
 }

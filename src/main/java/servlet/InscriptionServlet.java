@@ -27,6 +27,7 @@ public class InscriptionServlet extends HttpServlet {
             loginBean.setNom(req.getParameter("nom"));
             loginBean.setPrenom(req.getParameter("prenom"));
             loginBean.setEmail(req.getParameter("email"));
+            loginBean.setConnecter(0);
 
             if (LoginDao.inscription(loginBean)) {
                 resp.sendRedirect("/login.jsp");

@@ -7,6 +7,7 @@ public class LoginBean {
     private String nom;
     private String prenom;
     private String email;
+    private int connecter;
 
     public String getLogin() {
         return login;
@@ -46,6 +47,14 @@ public class LoginBean {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getConnecter() {
+        return connecter;
+    }
+
+    public void setConnecter(int connecter) {
+        this.connecter = connecter;
     }
 
     @Override

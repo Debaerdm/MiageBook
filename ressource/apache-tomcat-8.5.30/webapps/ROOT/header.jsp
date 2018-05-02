@@ -25,8 +25,6 @@
             </div>
             <ul class="nav navbar-nav">
                 <li class="active" ><a href="myindex.jsp">Home</a></li>
-                <li><a href="#">Page 1</a></li>
-                <li><a href="#">Page 2</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <%
@@ -44,12 +42,17 @@
                     }*/
 
                     if (currentUser != null) { %>
-                         <li>
-                             <a href="profile.jsp"><span class="glyphicon glyphicon-user"></span>
-                                 <%= currentUser.getLogin() %>
-                             </a>
-                         </li>
-                         <li><a href="/logoutService"><span class="glyphicon glyphicon-log-in"></span> Déconnexion </a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="profile.jsp"><span class="glyphicon glyphicon-user"><%= currentUser.getLogin() %></span></a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Separated link</a>
+                            </div>
+                        </li>
+                        <li><a href="/logoutService"><span class="glyphicon glyphicon-log-in"></span> Déconnexion </a></li>
                     <% } else { %>
                         <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Login </a> </li>
                         <li><a href="inscription.jsp"><span class="glyphicon glyphicon-user"></span> Sign Up </a> </li>

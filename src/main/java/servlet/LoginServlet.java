@@ -17,11 +17,13 @@ public class LoginServlet extends HttpServlet {
             LoginBean bean;
 
             if ((bean = LoginDao.validate(req.getParameter("login"), req.getParameter("password"))) != null) {
-                HttpSession session = req.getSession(true);
-                session.setAttribute("currentSessionUser", bean);
-                session.setMaxInactiveInterval(30*60);
+                if (LoginDao.connecter(bean.getLogin())) {
+                    HttpSession session = req.getSession(true);
+                    session.setAttribute("currentSessionUser", bean);
+                    session.setMaxInactiveInterval(30 * 60);
 
-                resp.sendRedirect("/myindex.jsp");
+                    resp.sendRedirect("/myindex.jsp");
+                }
             } else {
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.jsp");
                 PrintWriter out = resp.getWriter();
