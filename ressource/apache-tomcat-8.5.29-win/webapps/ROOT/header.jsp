@@ -25,6 +25,8 @@
             </div>
             <ul class="nav navbar-nav">
                 <li class="active" ><a href="myindex.jsp">Home</a></li>
+                <li class="" ><a href="profile.jsp">Profil</a></li>
+
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <%
