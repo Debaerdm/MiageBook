@@ -7,7 +7,6 @@ import org.mindrot.jbcrypt.BCrypt;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -89,15 +88,16 @@ public class LoginDao {
         try {
             Connection con = ConnectionProvider.getCon();
 
-            PreparedStatement ps = con.prepareStatement("SELECT nom, prenom, connecter FROM utilisateur");
+            PreparedStatement ps = con.prepareStatement("SELECT login, nom, prenom, connecter FROM utilisateur");
 
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 LoginBean loginBean = new LoginBean();
-                loginBean.setNom(rs.getString(1));
-                loginBean.setPrenom(rs.getString(2));
-                loginBean.setConnecter(rs.getInt(3));
+                loginBean.setLogin(rs.getString(1));
+                loginBean.setNom(rs.getString(2));
+                loginBean.setPrenom(rs.getString(3));
+                loginBean.setConnecter(rs.getInt(4));
 
                 beanList.add(loginBean);
             }

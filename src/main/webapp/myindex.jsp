@@ -27,6 +27,7 @@
                         }
 
                         $.each(json, function(idx, obj){
+                            var login = obj.login;
                             var nom = obj.nom;
                             var prenom = obj.prenom;
                             var connecter = obj.connecter;
