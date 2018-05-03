@@ -7,6 +7,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -43,7 +44,15 @@ public class LoginDao {
 
             ResultSet rs = ps.executeQuery();
             if(rs.next()) {
-                if(BCrypt.checkpw(password, rs.getString(2))) {
+
+                System.out.println(rs.getString(2));
+                System.out.println(password);
+                System.out.println("ici : cryptage enlevé");
+               // if(BCrypt.checkpw(password, rs.getString(2))) {
+
+                if(password.equals(rs.getString(2))){
+                    System.out.println(password + " / apres");
+
                     bean = new LoginBean();
 
                     bean.setLogin(rs.getString(1));
@@ -104,6 +113,41 @@ public class LoginDao {
         } catch (Exception ignored) {}
 
         return beanList;
+    }
+
+    public static List<LoginBean> getAllFriends(String login){
+
+        System.out.println("dao : getAllFriends");
+
+        List<LoginBean> beanListFriends = new ArrayList<>();
+
+        Connection con = ConnectionProvider.getCon();
+        try {
+            PreparedStatement ps = con.prepareStatement("SELECT login, nom, prenom, connecter from Utilisateur where login in (select User2 from Amis where User1 = 'Debaerdm') or login in (select User1 from Amis where User2 = 'Debaerdm');");
+
+            //ps.setString(1,login);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()){
+
+                while (rs.next()) {
+                    LoginBean loginBean = new LoginBean();
+                    loginBean.setLogin(rs.getString(1));
+                    loginBean.setNom(rs.getString(2));
+                    loginBean.setPrenom(rs.getString(3));
+                    loginBean.setConnecter(rs.getInt(4));
+
+                    beanListFriends.add(loginBean);
+                }
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return beanListFriends;
     }
 
     public static boolean connecter(String login) {

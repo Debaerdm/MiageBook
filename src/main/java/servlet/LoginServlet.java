@@ -15,9 +15,9 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             LoginBean bean;
-
             if ((bean = LoginDao.validate(req.getParameter("login"), req.getParameter("password"))) != null) {
                 if (LoginDao.connecter(bean.getLogin())) {
+
                     HttpSession session = req.getSession(true);
                     session.setAttribute("currentSessionUser", bean);
                     session.setMaxInactiveInterval(30 * 60);

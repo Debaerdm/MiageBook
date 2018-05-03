@@ -2,6 +2,7 @@ package rest;
 
 import bean.LoginBean;
 import dao.LoginDao;
+import servlet.LoginServlet;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -31,4 +32,23 @@ public class MyResource {
         GenericEntity<List<LoginBean>> entity = new GenericEntity<List<LoginBean>>(loginBeanList){};
         return Response.ok(entity).build();
     }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("allfriends")
+    public Response getAllFriends(){
+        System.out.println("getAllFriends");
+        List<LoginBean> loginBeansListFriends = LoginDao.getAllFriends("Debaerdm");
+        GenericEntity<List<LoginBean>> entity = new GenericEntity<List<LoginBean>>(loginBeansListFriends){};
+
+        for (LoginBean log : loginBeansListFriends){
+            System.out.println(log);
+        }
+
+        System.out.println(loginBeansListFriends.size());
+
+
+        return Response.ok(entity).build();
+    }
+
 }
