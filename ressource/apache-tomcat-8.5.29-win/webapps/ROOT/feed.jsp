@@ -101,7 +101,10 @@
                             Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio. </div>
                     </div>
                     <div class="media">
-                        <button class="btn btn-primary followbtn" onclick="mesAmis()">Supprimer</button>
+                        <form action="\suppressionAmisManager" method="post">
+                            <input type="hidden" value="">
+                            <button class="btn btn-primary followbtn" type="submit">Supprimer</button>
+                        </form>
                         <div class="media-left" style="border: dotted 1px "> <a href="javascript:void(0)">
                             <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="media-object"> </a> </div>
                         <div class="media-body">

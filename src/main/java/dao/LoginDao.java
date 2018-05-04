@@ -150,6 +150,20 @@ public class LoginDao {
         return beanListFriends;
     }
 
+    public static boolean supprAmis(String login){
+
+        Connection con = ConnectionProvider.getCon();
+
+        try{
+            PreparedStatement ps = con.prepareStatement("DELETE from Amis where User1='Debaerdm' AND User2 ='" + login +"'");
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+
     public static boolean connecter(String login) {
         return isStatus(login, "update utilisateur set connecter = 1 where login = ?");
     }

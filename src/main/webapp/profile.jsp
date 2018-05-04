@@ -36,6 +36,7 @@
                         myNode.removeChild(myNode.firstChild);
                     }
 
+                    var cpt = 1;
                     $.each(json, function(idx, obj){
                         var login = obj.login;
                         var nom = obj.nom;
@@ -43,15 +44,29 @@
                         var connecter = obj.connecter;
                         var login = obj.login;
 
-                        $("#friends").append(
-                            "<div class=\"media\" style=\"border: dotted 1px \">\n" +
+
+
+                        $("#friends").append("<div class=\"media\" style=\"border: dotted 1px \">\n" +
+                            "                        <form onsubmit=\"return confirm('Etes-vous sur ?')\" action=\"\\suppressionAmisManager\" method=\"post\">\n" +
+                            "                            <input id='supprAmis' name='suppr' type=\"hidden\" value='" + login + "'>\n" +
+                            "                            <input id='" + cpt + "' name='scroll' type=\"hidden\" value='"+ cpt +"'>\n" +
+                            "                            <button class=\"btn btn-primary followbtn\" type=\"submit\">Supprimer</button>\n" +
+                            "                        </form>\n" +
+                            "                        <div class=\"media-left\"> <a href=\"javascript:void(0)\">\n" +
+                            "                            <img src=\"https://bootdey.com/img/Content/avatar/avatar1.png\" alt=\"\" class=\"media-object\"> </a> </div>\n" +
+                            "                        <div class=\"media-body\">\n" +
+                            "                            <h4 class=\"media-heading\">" + prenom + " " +  nom + "</h4>\n" +
+                            "                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio. </div>\n" +
+                            "                    </div><div id='div" + cpt + "' style='background-color: #1e7e34'>retour</div>"
+                            /*"<div class=\"media\" style=\"border: dotted 1px \">\n" +
                             "                        <button onclick='supprimerAmis("+ "\"" + login + "\"" +")' class=\"btn btn-primary followbtn\">Supprimer</button>\n" +
                             "                        <div class=\"media-left\"> <a href=\"javascript:void(0)\">\n" +
                             "                            <img src=\"https://bootdey.com/img/Content/avatar/avatar1.png\" alt=\"\" class=\"media-object\"> </a> </div>\n" +
                             "                        <div class=\"media-body\">\n" +
                             "                            <h4 class=\"media-heading\">" + prenom + " " +  nom + "</h4>\n" +
                             "                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio. </div>\n" +
-                            "                    </div>");
+                            "                    </div>"*/);
+                    cpt = cpt+1;
                     });
                 }
             }).complete(function() {
@@ -66,6 +81,7 @@
 </head>
 <%@include file="header.jsp"%>
 <body>
+
 
 <div class="container">
     <H1 style="text-align: center; color: #ffc107; font-family: 'Arial Black'; font-weight: bold;">Mon Profil</H1>
@@ -102,10 +118,11 @@
 
     </div>
     <H1 style="text-align: center; color: #ffc107; font-family: 'Arial Black'; font-weight: bold;">Mes Amis</H1>
-    <div id="friends">
-    </div>
-</div>
+        <div id="friends">
 
+
+        </div>
+</div>
 </body>
 <%@include file="footer.jsp"%>
 </html>
