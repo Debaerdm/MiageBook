@@ -11,11 +11,13 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 
-@Secured
+/*@Secured
 @Provider
-@Priority(Priorities.AUTHENTICATION)
+@Priority(Priorities.AUTHENTICATION)*/
 public class AuthenticationFilter implements ContainerRequestFilter {
-
+    @Override
+    public void filter(ContainerRequestContext requestContext) throws IOException { }
+/*
     private static final String REALM = "example";
     private static final String AUTHENTICATION_SCHEME = "Bearer";
 
@@ -61,7 +63,7 @@ public class AuthenticationFilter implements ContainerRequestFilter {
     private void validateToken(String token) throws Exception {
        /* Claims claims = Jwts.parser()
                 .setSigningKey(DatatypeConverter.parseBase64Binary(apiKey.getSecret()))
-                .parseClaimsJws(token).getBody();*/
+                .parseClaimsJws(token).getBody();
 
-    }
+    }*/
 }

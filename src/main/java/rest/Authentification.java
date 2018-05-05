@@ -6,12 +6,12 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("/authentication")
+//@Path("/authentication")
 public class Authentification {
-
-    @POST
+    /*@POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/authenticate")
     public Response authenticateUser(LoginBean loginBean) {
 
         try {
@@ -38,13 +38,13 @@ public class Authentification {
                 throw new Exception();
             }
         } else {
-           throw new Exception();
+            throw new Exception();
         }
-    }
+    }*/
 
-    private String issueToken(String login) {
-        /*//The JWT signature algorithm we will be using to sign the token
-        SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
+    //private String issueToken(String login) {
+
+        /*SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
 
         long nowMillis = System.currentTimeMillis();
         Date now = new Date(nowMillis);
@@ -70,6 +70,7 @@ public class Authentification {
         //Builds the JWT and serializes it to a compact, URL-safe string
         return builder.compact();*/
 
-        return null;
-    }
+      //  return null;
+    //}
+
 }

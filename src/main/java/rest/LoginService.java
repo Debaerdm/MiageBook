@@ -1,7 +1,6 @@
 package rest;
 
 import dao.LoginDao;
-
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -14,13 +13,13 @@ public class LoginService {
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    @Path("/{login}")
-    public Response loginExist(@PathParam("login") String login) {
+    public Response loginExist(String login) {
+        System.out.println(login);
         if (login.length() > 3 && login.length() < 17 && LoginDao.exist(login)) {
             return Response.status(Response.Status.OK).entity("Success").build();
         }
 
         return Response.status(Response.Status.NOT_FOUND).entity("Error").build();
     }
+
 }

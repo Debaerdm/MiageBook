@@ -10,7 +10,7 @@ import java.util.Set;
 
 @ApplicationPath("/rest")
 public class ApplicationConfig extends Application {
-    public Set<Class<?>> getClasses() {
+    /*public Set<Class<?>> getClasses() {
         return new HashSet<>(Arrays.asList(LoginService.class, StatusService.class, UsersService.class));
-    }
+    }*/
 }

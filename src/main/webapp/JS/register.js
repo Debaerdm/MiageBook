@@ -45,8 +45,9 @@ function loginTest(login) {
 
     $.ajax({
         type: 'POST',
-        url: '/rest/login/'+login,
-        dataType : 'json',
+        url: '/rest/login/',
+        data: login,
+        dataType : 'text',
         statusCode: {
             200: function () {
                 document.getElementById("login").style.borderColor = badColor;
