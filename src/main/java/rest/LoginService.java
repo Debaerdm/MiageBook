@@ -15,8 +15,8 @@ public class LoginService {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    @Path("loginExist")
-    public Response loginExist(@FormParam("login") String login) {
+    @Path("/{login}")
+    public Response loginExist(@PathParam("login") String login) {
         if (login.length() > 3 && login.length() < 17 && LoginDao.exist(login)) {
             return Response.status(Response.Status.OK).entity("Success").build();
         }

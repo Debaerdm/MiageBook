@@ -16,7 +16,7 @@
             function getUsers() {
                 $.ajax({
                     type: 'GET',
-                    url: '/api/users/allusers',
+                    url: '/rest/users/allusers',
                     dataType: 'json',
                     success: function(json) {
                         console.log(JSON.stringify(json));
@@ -32,7 +32,7 @@
                             let prenom = obj.prenom;
                             let connecter = obj.connecter;
 
-                            $(".list-group").append(
+                            $("#allUsers").append(
                                 "<a href=\"profile.jsp#"+login+"\" class=\"list-group-item list-group-item-action list-group-item-"+((connecter !== 0) ? "success" : "light")
                                 + "\"> " + nom + " " + prenom +"</a>");
                         });
@@ -65,7 +65,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="first-column">
-                    <div class="col-md-8 col-sm-12 pull-left posttimeline">
+                    <div class="col-6">
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 <div class="status-upload nopaddingbtm">
@@ -76,7 +76,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="texte"><span class="req"></span><strong> Description : </strong></label>
-                                            <textarea class="form-control" type="text" name="texte" id ="texte" placeholder="Partagez vos humeurs !" required autofocus></textarea>
+                                            <textarea class="form-control" type="text" name="texte" id ="texte" placeholder="Partager nous votre humeur !" required autofocus></textarea>
                                         </div>
                                         <br>
                                         <ul class="nav nav-pills pull-left ">
@@ -91,7 +91,8 @@
                     </div>
                 </div>
                 <div class="second-column">
-                    <div id="allUsers" class="list-group">
+                    <div class="col">
+                     <div id="allUsers" class="list-group"></div>
                     </div>
                 </div>
             </div>

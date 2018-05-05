@@ -26,7 +26,7 @@
         function getUsers() {
             $.ajax({
                 type: 'GET',
-                url: '/api/users/allfriends',
+                url: '/rest/users/allfriends',
                 dataType: 'json',
                 success: function(json) {
                     console.log(JSON.stringify(json));

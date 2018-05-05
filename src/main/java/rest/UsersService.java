@@ -22,7 +22,7 @@ public class UsersService {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("allusers")
+    @Path("/allusers")
     public Response getAllUsers() {
         List<LoginBean> loginBeanList = LoginDao.getAllUsers();
         GenericEntity<List<LoginBean>> entity = new GenericEntity<List<LoginBean>>(loginBeanList){};
@@ -31,7 +31,7 @@ public class UsersService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("allfriends")
+    @Path("/allfriends")
     public Response getAllFriends(@FormParam("login") String login){
         List<LoginBean> loginBeansListFriends = LoginDao.getAllFriends(login);
         GenericEntity<List<LoginBean>> entity = new GenericEntity<List<LoginBean>>(loginBeansListFriends){};

@@ -45,8 +45,7 @@ function loginTest(login) {
 
     $.ajax({
         type: 'POST',
-        url: '/api/login/loginExist',
-        data: "login=" + login,
+        url: '/rest/login/'+login,
         dataType : 'json',
         statusCode: {
             200: function () {

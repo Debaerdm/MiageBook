@@ -1,6 +1,5 @@
 package servlet;
 
-import bean.LoginBean;
 import dao.LoginDao;
 
 import javax.servlet.RequestDispatcher;

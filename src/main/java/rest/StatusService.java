@@ -13,7 +13,7 @@ import java.util.List;
 public class StatusService {
 
     @GET
-    @Path("allStatus/${login}")
+    @Path("/allStatus/${login}")
     public Response allStatus(@QueryParam("login") String login) {
         List<StatusBean> statusBeans = StatusDao.getAllStatusByUsers(login);
         GenericEntity<List<StatusBean>> entity = new GenericEntity<List<StatusBean>>(statusBeans){};
@@ -21,7 +21,7 @@ public class StatusService {
     }
 
     @GET
-    @Path("allStatus")
+    @Path("/allStatus")
     public Response allStatus() {
         List<StatusBean> statusBeans = StatusDao.getAllStatus();
         GenericEntity<List<StatusBean>> entity = new GenericEntity<List<StatusBean>>(statusBeans){};
