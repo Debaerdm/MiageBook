@@ -1,5 +1,5 @@
 .navbar {
-     margin-bottom:0;
+     margin-bottom: 0;
  }
 
 .jumbotron {
@@ -84,17 +84,17 @@ footer{
 }
 
 .first-column {
-    max-height: 75%;
+    max-height: 30%;
     overflow-y: scroll;
-    width: 70%;
+    width: 60%;
     float: left;
-    margin-left: 25px;
+    margin-left: 100px;
 }
 
 .second-column {
     max-height: 60%;
     overflow-y: scroll;
-    width: 20%;
+    width: 30%;
     float: right;
     margin-right: 25px;
 }

@@ -2,8 +2,8 @@ package rest;
 
 import bean.LoginBean;
 import dao.LoginDao;
-import servlet.LoginServlet;
 
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -12,12 +12,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-/**
- * Root resource (exposed at "myresource" path)
- */
-@Path("/api")
-public class MyResource {
-
+@Path("/users")
+public class UsersService {
     /**
      * Method handling HTTP GET requests. The returned object will be sent
      * to the client as "text/plain" media type.
@@ -36,19 +32,10 @@ public class MyResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("allfriends")
-    public Response getAllFriends(){
-        System.out.println("getAllFriends");
-        List<LoginBean> loginBeansListFriends = LoginDao.getAllFriends("Debaerdm");
+    public Response getAllFriends(@FormParam("login") String login){
+        List<LoginBean> loginBeansListFriends = LoginDao.getAllFriends(login);
         GenericEntity<List<LoginBean>> entity = new GenericEntity<List<LoginBean>>(loginBeansListFriends){};
-
-        for (LoginBean log : loginBeansListFriends){
-            System.out.println(log);
-        }
-
-        System.out.println(loginBeansListFriends.size());
-
 
         return Response.ok(entity).build();
     }
-
 }

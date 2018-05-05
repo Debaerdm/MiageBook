@@ -1,42 +1,67 @@
 package servlet.filters;
 
-import javax.servlet.*;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import servlet.Secured;
+
+import javax.annotation.Priority;
+import javax.ws.rs.Priorities;
+import javax.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.container.ContainerRequestFilter;
+import javax.ws.rs.core.HttpHeaders;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 
-public class AuthenticationFilter implements Filter {
+@Secured
+@Provider
+@Priority(Priorities.AUTHENTICATION)
+public class AuthenticationFilter implements ContainerRequestFilter {
 
-    private ServletContext context;
-
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-        this.context = filterConfig.getServletContext();
-        this.context.log("AuthenticationFilter initialized");
-    }
+    private static final String REALM = "example";
+    private static final String AUTHENTICATION_SCHEME = "Bearer";
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        HttpServletRequest req = (HttpServletRequest) request;
-        HttpServletResponse res = (HttpServletResponse) response;
+    public void filter(ContainerRequestContext requestContext) throws IOException {
 
-        String uri = req.getRequestURI();
-        this.context.log("Requested Resource::"+uri);
+        // Get the Authorization header from the request
+        String authorizationHeader = requestContext.getHeaderString(HttpHeaders.AUTHORIZATION);
 
-        HttpSession session = req.getSession(false);
+        // Validate the Authorization header
+        if (!isTokenBasedAuthentication(authorizationHeader)) {
+            abortWithUnauthorized(requestContext);
+            return;
+        }
 
-        if(session == null && !uri.endsWith("loginManager")){
-            this.context.log("Unauthorized access request");
-            res.sendRedirect("login.jsp");
-        }else{
-            // pass the request along the filter chain
-            chain.doFilter(request, response);
+        // Extract the token from the Authorization header
+        String token = authorizationHeader.substring(AUTHENTICATION_SCHEME.length()).trim();
+
+        try {
+            // Validate the token
+            validateToken(token);
+        } catch (Exception e) {
+            abortWithUnauthorized(requestContext);
         }
     }
 
-    @Override
-    public void destroy() {
+    private boolean isTokenBasedAuthentication(String authorizationHeader) {
+        // Check if the Authorization header is valid
+        // It must not be null and must be prefixed with "Bearer" plus a whitespace
+        // The authentication scheme comparison must be case-insensitive
+        return authorizationHeader != null && authorizationHeader.toLowerCase().startsWith(AUTHENTICATION_SCHEME.toLowerCase() + " ");
+    }
+
+    private void abortWithUnauthorized(ContainerRequestContext requestContext) {
+
+        // Abort the filter chain with a 401 status code response
+        // The WWW-Authenticate header is sent along with the response
+        requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED)
+                        .header(HttpHeaders.WWW_AUTHENTICATE, AUTHENTICATION_SCHEME + " realm=\"" + REALM + "\"")
+                        .build());
+    }
+
+    private void validateToken(String token) throws Exception {
+       /* Claims claims = Jwts.parser()
+                .setSigningKey(DatatypeConverter.parseBase64Binary(apiKey.getSecret()))
+                .parseClaimsJws(token).getBody();*/
 
     }
 }

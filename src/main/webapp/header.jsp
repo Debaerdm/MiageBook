@@ -25,36 +25,21 @@
             </div>
             <ul class="nav navbar-nav">
                 <li class="active" ><a href="myindex.jsp">Home</a></li>
-                <li class="" ><a href="profile.jsp">Profil</a></li>
-
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <%
                     LoginBean currentUser = (LoginBean) (session.getAttribute("currentSessionUser"));
-
-                    /*String userName = null;
-                    String sessionID = null;
-
-                    Cookie[] cookies = request.getCookies();
-                    if(cookies !=null){
-                        for(Cookie cookie : cookies){
-                            if(cookie.getName().equals("user")) userName = cookie.getValue();
-                            if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
-                        }
-                    }*/
-
                     if (currentUser != null) { %>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="profile.jsp" role="button" aria-haspopup="true" aria-expanded="false">
+                                <span class="glyphicon glyphicon-user"><strong> <%= currentUser.getLogin() %> </strong></span>
+                            </a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="profile.jsp"><span class="glyphicon glyphicon-user"><%= currentUser.getLogin() %></span></a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Separated link</a>
+                                <a class="dropdown-item" href="#"> Mes amis </a>
+                                <a class="dropdown-item" href="#"> Liste des membres </a>
                             </div>
                         </li>
-                        <li><a href="/logoutService"><span class="glyphicon glyphicon-log-in"></span> Déconnexion </a></li>
+                        <li><a href="${pageContext.request.contextPath}/logoutservice?login=<%= currentUser.getLogin() %>"><span class="glyphicon glyphicon-log-in"></span> Déconnexion </a></li>
                     <% } else { %>
                         <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Login </a> </li>
                         <li><a href="inscription.jsp"><span class="glyphicon glyphicon-user"></span> Sign Up </a> </li>

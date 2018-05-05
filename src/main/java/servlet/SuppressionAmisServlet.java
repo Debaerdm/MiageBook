@@ -1,7 +1,6 @@
 package servlet;
 
 import dao.LoginDao;
-import jdk.jfr.events.ExceptionThrownEvent;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +12,6 @@ public class SuppressionAmisServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         try {
 
             String loginRemove = req.getParameter("suppr");
@@ -25,8 +23,6 @@ public class SuppressionAmisServlet extends HttpServlet {
             resp.sendRedirect("/profile.jsp#friends" );
 
 
-        }catch (Exception e){
-
-        }
+        } catch (Exception ignored){}
     }
 }

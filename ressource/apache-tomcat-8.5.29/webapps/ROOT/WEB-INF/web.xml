@@ -6,34 +6,6 @@
 
 <display-name>MiageBook</display-name>
 
-    <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>servlet.LoginServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/loginManager</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>InscriptionServlet</servlet-name>
-        <servlet-class>servlet.InscriptionServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>InscriptionServlet</servlet-name>
-        <url-pattern>/InscriptionManager</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>LogoutServlet</servlet-name>
-        <servlet-class>servlet.LogoutServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>LogoutServlet</servlet-name>
-        <url-pattern>/logoutService</url-pattern>
-    </servlet-mapping>
-
   <display-name>JSPExceptionHandling</display-name>
   <welcome-file-list>
     <welcome-file>myindex.jsp</welcome-file>

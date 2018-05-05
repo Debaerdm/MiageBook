@@ -1,12 +1,13 @@
-var goodColor = "#66cc66";
-var badColor = "#ff6666";
+let goodColor = "#66cc66";
+let badColor = "#ff6666";
+let valid = false;
 
 function checkPass() {
     //Store the password field objects into variables ...
-    var pass1 = document.getElementById('password');
-    var pass2 = document.getElementById('passwordRequired');
+    let pass1 = document.getElementById('password');
+    let pass2 = document.getElementById('passwordRequired');
     //Store the Confimation Message Object ...
-    var message = document.getElementById('confirmMessage');
+    let message = document.getElementById('confirmMessage');
     //Set the colors we will be using ...
 
     //Compare the values in the password field
@@ -28,6 +29,38 @@ function checkPass() {
     }
 }
 
+function sure() {
+    if (!valid) {
+        document.getElementById("login").style.borderColor = "#ff9000";
+        alert ("Utilisateur déjà utilisé : " + document.getElementById("login").value);
+    } else {
+        document.getElementById("login").style.borderColor = "#8b8b8b";
+    }
+
+    return valid;
+}
+
+function loginTest(login) {
+    login = login.replace(/[^a-zA-Z-'\n\r.]+/g, '');
+
+    $.ajax({
+        type: 'POST',
+        url: '/api/login/loginExist',
+        data: "login=" + login,
+        dataType : 'json',
+        statusCode: {
+            200: function () {
+                document.getElementById("login").style.borderColor = badColor;
+                valid = false;
+            },
+            404: function () {
+                document.getElementById("login").style.borderColor = goodColor;
+                valid = true;
+            }
+        }
+    });
+}
+
 /*function validatephone(phone) {
     var maintainplus = '';
     var numval = phone.value
@@ -43,9 +76,9 @@ function checkPass() {
 
 // validates text only
 function Validate(txt) {
-    var nom = document.getElementById("nom");
-    var prenom = document.getElementById("prenom");
-    var login = document.getElementById("login");
+    let nom = document.getElementById("nom");
+    let prenom = document.getElementById("prenom");
+    let login = document.getElementById("login");
 
     if (nom === txt) {
         nom.style.borderColor = (nom.value.length > 0)? goodColor : badColor;
@@ -64,8 +97,8 @@ function Validate(txt) {
 }
 // validate email
 function email_validate(email) {
-    var regMail = /^([_a-zA-Z0-9-]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+([a-zA-Z]{2,3})$/;
-    var emailObj = document.getElementById('email');
+    let regMail = /^([_a-zA-Z0-9-]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+([a-zA-Z]{2,3})$/;
+    let emailObj = document.getElementById('email');
 
     if(regMail.test(email) === false) {
         document.getElementById("status").innerHTML  = "<span class='warning'>L'adresse mail est pas valide.</span>";

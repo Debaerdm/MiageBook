@@ -26,25 +26,22 @@
         function getUsers() {
             $.ajax({
                 type: 'GET',
-                url: '/rest/api/allfriends',
+                url: '/api/users/allfriends',
                 dataType: 'json',
                 success: function(json) {
                     console.log(JSON.stringify(json));
 
-                    var myNode = document.getElementById("friends");
+                    let myNode = document.getElementById("friends");
                     while (myNode.firstChild) {
                         myNode.removeChild(myNode.firstChild);
                     }
 
-                    var cpt = 1;
+                    let cpt = 1;
                     $.each(json, function(idx, obj){
-                        var login = obj.login;
-                        var nom = obj.nom;
-                        var prenom = obj.prenom;
-                        var connecter = obj.connecter;
-                        var login = obj.login;
-
-
+                        let login = obj.login;
+                        let nom = obj.nom;
+                        let prenom = obj.prenom;
+                        let connecter = obj.connecter;
 
                         $("#friends").append("<div class=\"media\" style=\"border: dotted 1px \">\n" +
                             "                        <form onsubmit=\"return confirm('Etes-vous sur ?')\" action=\"\\suppressionAmisManager\" method=\"post\">\n" +
@@ -66,7 +63,7 @@
                             "                            <h4 class=\"media-heading\">" + prenom + " " +  nom + "</h4>\n" +
                             "                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio. </div>\n" +
                             "                    </div>"*/);
-                    cpt = cpt+1;
+                        cpt = cpt+1;
                     });
                 }
             }).complete(function() {
@@ -117,12 +114,12 @@
         </div>
 
     </div>
-    <H1 style="text-align: center; color: #ffc107; font-family: 'Arial Black'; font-weight: bold;">Mes Amis</H1>
-        <div id="friends">
+    <H1 style="text-align: center; color: #ffc107; font-family: 'Arial Black',serif; font-weight: bold;">Mes Amis</H1>
+    <div id="friends">
 
 
-        </div>
+    </div>
 </div>
 </body>
-<%@include file="footer.jsp"%>
+<!--<%@include file="footer.jsp"%>-->
 </html>

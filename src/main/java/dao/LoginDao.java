@@ -45,13 +45,7 @@ public class LoginDao {
             ResultSet rs = ps.executeQuery();
             if(rs.next()) {
 
-                System.out.println(rs.getString(2));
-                System.out.println(password);
-                System.out.println("ici : cryptage enlevé");
-               // if(BCrypt.checkpw(password, rs.getString(2))) {
-
-                if(password.equals(rs.getString(2))){
-                    System.out.println(password + " / apres");
+                if(BCrypt.checkpw(password, rs.getString(2))) {
 
                     bean = new LoginBean();
 
@@ -66,6 +60,32 @@ public class LoginDao {
         }
 
         return bean;
+    }
+
+    public static LoginBean basicInformation(String login) {
+        LoginBean loginBean = null;
+
+        try {
+            Connection con = ConnectionProvider.getCon();
+
+            PreparedStatement ps = con.prepareStatement("SELECT login, nom, prenom FROM utilisateur WHERE login = ?");
+            ps.setString(1, login);
+
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) {
+
+
+                loginBean = new LoginBean();
+
+                loginBean.setLogin(rs.getString(1));
+                loginBean.setNom(rs.getString(2));
+                loginBean.setPrenom(rs.getString(3));
+            }
+        } catch(Exception e){
+            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, "[LOGIN DAO] VALIDATION ERROR DATA", e);
+        }
+
+        return loginBean;
     }
 
     public static boolean inscription(LoginBean bean){
@@ -101,15 +121,7 @@ public class LoginDao {
 
             ResultSet rs = ps.executeQuery();
 
-            while (rs.next()) {
-                LoginBean loginBean = new LoginBean();
-                loginBean.setLogin(rs.getString(1));
-                loginBean.setNom(rs.getString(2));
-                loginBean.setPrenom(rs.getString(3));
-                loginBean.setConnecter(rs.getInt(4));
-
-                beanList.add(loginBean);
-            }
+            AddLoginBean(beanList, rs);
         } catch (Exception ignored) {}
 
         return beanList;
@@ -123,24 +135,17 @@ public class LoginDao {
 
         Connection con = ConnectionProvider.getCon();
         try {
-            PreparedStatement ps = con.prepareStatement("SELECT login, nom, prenom, connecter from Utilisateur where login in (select User2 from Amis where User1 = 'Debaerdm') or login in (select User1 from Amis where User2 = 'Debaerdm');");
+            PreparedStatement ps = con.prepareStatement("" +
+                    "SELECT login, nom, prenom, connecter from Utilisateur where login in " +
+                    "(select User2 from Amis where User1 = 'Debaerdm') or login in " +
+                    "(select User1 from Amis where User2 = 'Debaerdm');");
 
             //ps.setString(1,login);
 
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()){
-
-                while (rs.next()) {
-                    LoginBean loginBean = new LoginBean();
-                    loginBean.setLogin(rs.getString(1));
-                    loginBean.setNom(rs.getString(2));
-                    loginBean.setPrenom(rs.getString(3));
-                    loginBean.setConnecter(rs.getInt(4));
-
-                    beanListFriends.add(loginBean);
-                }
-
+                AddLoginBean(beanListFriends, rs);
             }
 
         } catch (SQLException e) {
@@ -150,18 +155,33 @@ public class LoginDao {
         return beanListFriends;
     }
 
-    public static boolean supprAmis(String login){
 
-        Connection con = ConnectionProvider.getCon();
+    private static void AddLoginBean(List<LoginBean> beanList, ResultSet rs) throws SQLException {
+        while (rs.next()) {
+            LoginBean loginBean = new LoginBean();
+            loginBean.setLogin(rs.getString(1));
+            loginBean.setNom(rs.getString(2));
+            loginBean.setPrenom(rs.getString(3));
+            loginBean.setConnecter(rs.getInt(4));
+
+            beanList.add(loginBean);
+        }
+    }
+
+    public static boolean supprAmis(String login){
+        boolean status = false;
 
         try{
-            PreparedStatement ps = con.prepareStatement("DELETE from Amis where User1='Debaerdm' AND User2 ='" + login +"'");
-            ps.executeUpdate();
+            Connection con = ConnectionProvider.getCon();
+            PreparedStatement ps = con.prepareStatement("DELETE from Amis where User1='Debaerdm' AND User2 = ?");
+            ps.setString(1, login);
 
+            status = (ps.executeUpdate() > 0);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return true;
+
+        return status;
     }
 
     public static boolean connecter(String login) {
