@@ -8,10 +8,18 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static dao.Provider.Provider.DATE_FORMAT;
 
 public class LoginDao {
 
@@ -46,7 +54,7 @@ public class LoginDao {
             if(rs.next()) {
 
                 if(password.equals(rs.getString(2))){
-               // if(BCrypt.checkpw(password, rs.getString(2))) {
+                    // if(BCrypt.checkpw(password, rs.getString(2))) {
 
                     bean = new LoginBean();
 
@@ -74,8 +82,6 @@ public class LoginDao {
 
             ResultSet rs = ps.executeQuery();
             if(rs.next()) {
-
-
                 loginBean = new LoginBean();
 
                 loginBean.setLogin(rs.getString(1));
@@ -95,7 +101,7 @@ public class LoginDao {
         try {
             Connection con = ConnectionProvider.getCon();
 
-            PreparedStatement ps = con.prepareStatement("insert into utilisateur values(?,?,?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("insert into utilisateur values(?,?,?,?,?,?,?)");
 
             ps.setString(1, bean.getLogin());
             ps.setString(2, bean.getPassword());
@@ -103,6 +109,7 @@ public class LoginDao {
             ps.setString(4, bean.getPrenom());
             ps.setString(5, bean.getEmail());
             ps.setInt(6, bean.getConnecter());
+            ps.setString(7, null);
 
             status = (ps.executeUpdate() > 0);
         } catch (Exception e) {
@@ -118,7 +125,7 @@ public class LoginDao {
         try {
             Connection con = ConnectionProvider.getCon();
 
-            PreparedStatement ps = con.prepareStatement("SELECT login, nom, prenom, connecter FROM utilisateur");
+            PreparedStatement ps = con.prepareStatement("SELECT login, nom, prenom, connecter, date_connection FROM utilisateur");
 
             ResultSet rs = ps.executeQuery();
 
@@ -144,11 +151,12 @@ public class LoginDao {
 
 
             PreparedStatement ps = con.prepareStatement("" +
-                    "SELECT login, nom, prenom, connecter from Utilisateur where login in " +
-                    "(select User2 from Amis where User1 = '" +login + "') or login in " +
-                    "(select User1 from Amis where User2 = '" +login + "');");
+                    "SELECT login, nom, prenom, connecter, date_connection from Utilisateur where login in " +
+                    "(select User2 from Amis where User1 = ?) or login in " +
+                    "(select User1 from Amis where User2 = ?);");
 
-            //ps.setString(1,login);
+            ps.setString(1,login);
+            ps.setString(2,login);
 
             ResultSet rs = ps.executeQuery();
 
@@ -172,17 +180,31 @@ public class LoginDao {
             loginBean.setPrenom(rs.getString(3));
             loginBean.setConnecter(rs.getInt(4));
 
+            String date_connection = rs.getString(5);
+
+            System.out.println(loginBean.getLogin()+ " "+date_connection);
+
+            if (date_connection != null) {
+                if (!date_connection.equals("null")) {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT, Locale.FRANCE);
+                    LocalDateTime localDateTime = LocalDateTime.parse(date_connection, formatter);
+                    System.out.println(localDateTime.toString());
+                    loginBean.setDate_connection(localDateTime);
+                }
+            }
+
             beanList.add(loginBean);
         }
     }
 
-    public static boolean supprAmis(String login){
+    public static boolean supprAmis(String friend, String of){
         boolean status = false;
 
         try{
             Connection con = ConnectionProvider.getCon();
-            PreparedStatement ps = con.prepareStatement("DELETE from Amis where User1='Debaerdm' AND User2 = ?");
-            ps.setString(1, login);
+            PreparedStatement ps = con.prepareStatement("DELETE from Amis where User1= ? AND User2 = ?");
+            ps.setString(1, of);
+            ps.setString(2, friend);
 
             status = (ps.executeUpdate() > 0);
         } catch (SQLException e) {
@@ -193,24 +215,41 @@ public class LoginDao {
     }
 
     public static boolean connecter(String login) {
-        return isStatus(login, "update utilisateur set connecter = 1 where login = ?");
-    }
-
-    public static boolean disconnecter(String login) {
-        return isStatus(login, "update utilisateur set connecter = 0 where login = ?");
-    }
-
-    private static boolean isStatus(String login, String s) {
         boolean status = false;
+
         try {
             Connection con = ConnectionProvider.getCon();
 
-            PreparedStatement ps = con.prepareStatement(s);
+            PreparedStatement ps = con.prepareStatement("update utilisateur set connecter = 1, date_connection = null where login = ?");
 
             ps.setString(1, login);
 
             status = (ps.executeUpdate() > 0);
-        } catch (Exception ignored) {}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return status;
+    }
+
+    public static boolean disconnecter(String login) {
+        boolean status = false;
+
+        try {
+            Connection con = ConnectionProvider.getCon();
+
+            PreparedStatement ps = con.prepareStatement("update utilisateur set connecter = 0, date_connection = ? where login = ?");
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT, Locale.FRANCE);
+            String date = formatter.format(LocalDateTime.now());
+
+            ps.setString(1, date);
+            ps.setString(2, login);
+
+            status = (ps.executeUpdate() > 0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return status;
     }

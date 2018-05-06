@@ -8,6 +8,7 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <link href="CSS/home.css" rel="stylesheet" type="text/css">
+        <link href="CSS/profile.css" rel="stylesheet" type="text/css">
         <link href="CSS/miageNav.css" rel="stylesheet" type="text/css">
 
         <script>
@@ -82,13 +83,82 @@
                                         <ul class="nav nav-pills pull-left ">
                                             <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="glyphicon glyphicon-picture"></i></a></li>
                                         </ul>
-                                        <button type="submit" class="btn btn-success pull-right"> Share </button>
+                                        <button type="submit" class="btn btn-success pull-right"> Publiez </button>
                                     </form>
                                 </div>
                                 <!-- Status Upload  -->
                             </div>
                         </div>
                     </div>
+
+
+
+
+                    <div class="panel panel-default">
+                        <div class="btn-group pull-right postbtn">
+                            <button type="button" class="dotbtn dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <span class="dots"></span> </button>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li><a href="javascript:void(0)">Hide this</a></li>
+                                <li><a href="javascript:void(0)">Report</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="media">
+                                <div class="media-left"> <a href="javascript:void(0)"> <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="" class="media-object"> </a> </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Lucky Sans<br>
+                                        <small class="date"><i class="fa fa-clock-o"></i> Yesterday, 2:00 am</small> </h4>
+                                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio. </p>
+
+                                    <ul class="nav nav-pills pull-left ">
+                                        <li><a href="" title=""><i class="glyphicon glyphicon-thumbs-up"></i> 2015</a></li>
+                                        <li><a href="" title=""><i class=" glyphicon glyphicon-comment"></i> 25</a></li>
+                                        <li><a href="" title=""><i class="glyphicon glyphicon-share-alt"></i> 15</a></li>
+                                    </ul>
+                                </div>
+                                <!-- CHAMPS REPONSE AU STATUS  -->
+                                <form>
+                                    <textarea class="form-control" placeholder="Comment here"></textarea>
+                                    <br>
+                                    <ul class="nav nav-pills pull-left ">
+                                        <li><a title=""><i class="glyphicon glyphicon-bullhorn"></i></a></li>
+                                        <li><a title=""><i class=" glyphicon glyphicon-facetime-video"></i></a></li>
+                                        <li><a title=""><i class="glyphicon glyphicon-picture"></i></a></li>
+                                    </ul>
+                                    <button type="submit" class="btn btn-success pull-right"> Comment</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-12 commentsblock border-top">
+                            <div class="media">
+                                <div class="media-left"> <a href="javascript:void(0)"> <img alt="64x64" src="https://bootdey.com/img/Content/avatar/avatar1.png" class="media-object"> </a> </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Astha Smith<br> <small class="date"><i class="fa fa-clock-o"></i> Yesterday, 2:00 am</small> </h4>
+                                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="media-left"> <a href="javascript:void(0)"> <img alt="64x64" src="https://bootdey.com/img/Content/avatar/avatar1.png" class="media-object"> </a> </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Lucky Sans<br> <small class="date"><i class="fa fa-clock-o"></i> Yesterday, 2:00 am</small> </h4>
+                                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. </p>
+                                    <div class="media">
+                                        <div class="media-left"> <a href="javascript:void(0)"> <img alt="64x64" src="https://bootdey.com/img/Content/avatar/avatar1.png" class="media-object"> </a> </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">Astha Smith<br> <small class="date"><i class="fa fa-clock-o"></i> Yesterday, 2:00 am</small> </h4>
+                                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
                 </div>
                 <div class="second-column">
                     <div class="col">

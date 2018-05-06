@@ -2,7 +2,7 @@ package bean;
 
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class StatusBean implements Serializable {
@@ -11,7 +11,7 @@ public class StatusBean implements Serializable {
     private String titre;
     private String texte;
     private BufferedImage image;
-    private Date date;
+    private LocalDateTime date;
     private LoginBean loginBean;
     private List<CommentaireBean> commentaireBeanList;
 
@@ -47,11 +47,11 @@ public class StatusBean implements Serializable {
         this.image = image;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

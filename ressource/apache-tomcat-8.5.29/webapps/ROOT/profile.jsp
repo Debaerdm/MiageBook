@@ -26,7 +26,7 @@
         function getUsers() {
             $.ajax({
                 type: 'GET',
-                url: '/rest/users/allfriends',
+                url: '/rest/users/allusers/Debaerdm',
                 dataType: 'json',
                 success: function(json) {
                     console.log(JSON.stringify(json));
@@ -44,6 +44,7 @@
                         let connecter = obj.connecter;
 
                         $("#friends").append("<div class=\"media\" style=\"border: dotted 1px \">\n" +
+                            "<a href=\"profile.jsp#"+login+"\">Voir le profil</a>" +
                             "                        <form onsubmit=\"return confirm('Etes-vous sur ?')\" action=\"\\suppressionAmisManager\" method=\"post\">\n" +
                             "                            <input id='supprAmis' name='suppr' type=\"hidden\" value='" + login + "'>\n" +
                             "                            <input id='" + cpt + "' name='scroll' type=\"hidden\" value='"+ cpt +"'>\n" +
@@ -53,8 +54,7 @@
                             "                            <img src=\"https://bootdey.com/img/Content/avatar/avatar1.png\" alt=\"\" class=\"media-object\"> </a> </div>\n" +
                             "                        <div class=\"media-body\">\n" +
                             "                            <h4 class=\"media-heading\">" + prenom + " " +  nom + "</h4>\n" +
-                            "                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio. </div>\n" +
-                            "                    </div><div id='div" + cpt + "' style='background-color: #1e7e34'>retour</div>"
+                            "                            En ligne / derniere connexion il y a ...  </div>\n"
                             /*"<div class=\"media\" style=\"border: dotted 1px \">\n" +
                             "                        <button onclick='supprimerAmis("+ "\"" + login + "\"" +")' class=\"btn btn-primary followbtn\">Supprimer</button>\n" +
                             "                        <div class=\"media-left\"> <a href=\"javascript:void(0)\">\n" +
@@ -79,6 +79,14 @@
 <%@include file="header.jsp"%>
 <body>
 
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1> Mon Profil </h1>
+        <p>
+            Cette Page contient mes Infos et ma liste d'amis
+        </p>
+    </div>
+</div>
 
 <div class="container">
     <H1 style="text-align: center; color: #ffc107; font-family: 'Arial Black'; font-weight: bold;">Mon Profil</H1>

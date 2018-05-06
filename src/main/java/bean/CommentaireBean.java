@@ -1,13 +1,13 @@
 package bean;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class CommentaireBean implements Serializable {
 
     private long id;
     private String texte;
-    private Date date;
+    private LocalDateTime date;
     private LoginBean loginBean;
 
     public long getId() {
@@ -26,11 +26,11 @@ public class CommentaireBean implements Serializable {
         this.texte = texte;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

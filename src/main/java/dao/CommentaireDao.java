@@ -8,13 +8,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import static dao.Provider.Provider.DATE_FORMAT;
 
 public class CommentaireDao {
 
@@ -35,12 +35,8 @@ public class CommentaireDao {
                 commentaireBean.setId(resultSet.getLong(1));
                 commentaireBean.setTexte(resultSet.getString(2));
 
-                String datestr = resultSet.getString(3);
-
-                DateFormat format = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS", Locale.FRANCE);
-                Date date = format.parse(datestr);
-
-                commentaireBean.setDate(date);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT, Locale.FRANCE);
+                commentaireBean.setDate(LocalDateTime.parse(resultSet.getString(3), formatter));
 
                 String login = resultSet.getString(4);
 
@@ -53,7 +49,7 @@ public class CommentaireDao {
 
                 commentaireBeans.add(commentaireBean);
             }
-        } catch (SQLException | ParseException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 

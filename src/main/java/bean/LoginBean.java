@@ -1,6 +1,7 @@
 package bean;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 public class LoginBean implements Serializable {
 
@@ -10,6 +11,7 @@ public class LoginBean implements Serializable {
     private String prenom;
     private String email;
     private int connecter;
+    private LocalDateTime date_connection;
 
     public String getLogin() {
         return login;
@@ -57,6 +59,14 @@ public class LoginBean implements Serializable {
 
     public void setConnecter(int connecter) {
         this.connecter = connecter;
+    }
+
+    public LocalDateTime getDate_connection() {
+        return date_connection;
+    }
+
+    public void setDate_connection(LocalDateTime date_connection) {
+        this.date_connection = date_connection;
     }
 
     @Override

@@ -17,7 +17,7 @@ public class SuppressionAmisServlet extends HttpServlet {
         try {
 
             String loginRemove = req.getParameter("suppr");
-            LoginDao.supprAmis(loginRemove);
+            LoginDao.supprAmis("","");
 
             String scroll = req.getParameter("scroll");
             System.out.println("scroll : " + scroll);

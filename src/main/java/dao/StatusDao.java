@@ -11,13 +11,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import static dao.Provider.Provider.DATE_FORMAT;
 
 public class StatusDao {
 
@@ -33,7 +33,7 @@ public class StatusDao {
 
             result(statusBeans, resultSet);
 
-        } catch (SQLException | IOException | ParseException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
 
@@ -53,14 +53,14 @@ public class StatusDao {
 
             result(statusBeans, resultSet);
 
-        } catch (SQLException | IOException | ParseException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
 
         return statusBeans;
     }
 
-    private static void result(List<StatusBean> statusBeans, ResultSet resultSet) throws SQLException, IOException, ParseException {
+    private static void result(List<StatusBean> statusBeans, ResultSet resultSet) throws SQLException, IOException {
         while (resultSet.next()) {
             StatusBean statusBean = new StatusBean();
 
@@ -77,12 +77,8 @@ public class StatusDao {
                 statusBean.setImage(image);
             }
 
-            String datestr = resultSet.getString(5);
-
-            DateFormat format = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS", Locale.FRANCE);
-            Date date = format.parse(datestr);
-
-            statusBean.setDate(date);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT, Locale.FRANCE);
+            statusBean.setDate(LocalDateTime.parse(resultSet.getString(5), formatter));
 
             String login = resultSet.getString(6);
 
@@ -116,8 +112,8 @@ public class StatusDao {
                 preparedStatement.setObject(3, null);
             }
 
-            DateFormat format = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS", Locale.FRANCE);
-            String date = format.format(statusBean.getDate());
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT, Locale.FRANCE);
+            String date = formatter.format(statusBean.getDate());
 
             preparedStatement.setString(4, date);
             preparedStatement.setString(5, statusBean.getLoginBean().getLogin());
