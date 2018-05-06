@@ -1,5 +1,5 @@
 .navbar {
-     margin-bottom:0;
+     margin-bottom: 0;
  }
 
 .jumbotron {
@@ -84,16 +84,26 @@ footer{
 }
 
 .first-column {
-    max-height: 75%;
+    max-height: 100%;
     overflow-y: scroll;
-    width: 70%;
+    overflow-x: hidden;
+    width: 65%;
     float: left;
     margin-left: 25px;
+    border-radius: 1px;
+    border: 1px #6c757d;
 }
 
 .second-column {
     max-height: 60%;
     overflow-y: scroll;
-    width: 20%;
+    overflow-x: hidden;
+    width: 30%;
     float: right;
+    margin-right: 25px;
+}
+
+::-webkit-scrollbar {
+    display: none;
+    height: 100%;
 }

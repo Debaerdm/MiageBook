@@ -74,6 +74,24 @@ function getUsers() {
                 let connecter = obj.connecter;
                 let date_connection = obj.date_connection;
 
+                console.log(date_connection);
+
+                // document.getElementById("myAnchor").setAttribute("href", "https://www.w3schools.com");
+
+                /*$("#allUsers").append(
+                    "<div class=\"media\" style=\"border: dotted 1px \">\n" +
+                    "<a href=\"profile.jsp#"+login+"\">Voir le profil</a>" +
+                    " <form onsubmit=\"return confirm('Etes-vous sur ?')\" action=\"\\suppressionAmisManager\" method=\"post\">\n" +
+                    "   <input id='ajouterAmis' name='ajouter' type=\"hidden\" value='" + login + "'>\n" +
+                    "    <button class=\"btn btn-primary followbtn\" type=\"submit\">Ajouter à mes Amis</button>\n" +
+                    " </form>\n" +
+                    " <div class=\"media-left\"> <a href=\"javascript:void(0)\">\n" +
+                    "  <img src=\"https://bootdey.com/img/Content/avatar/avatar1.png\" alt=\"\" class=\"media-object\"> </a> </div>\n" +
+                    " <div class=\"media-body\">\n" +
+                    " <h4 class=\"media-heading\">" + prenom + " " +  nom + "</h4>\n" +
+                    "                            En ligne / Derniere connexion il y a ...    </div>\n"
+                );*/
+
                 profilLink.setAttribute("href", "profile.jsp#"+login);
                 aLogo.setAttribute("href",  "profile.jsp#"+login);
                 setAttributes(inputAddHidden, {"id":"ajouterAmis", "name":"ajouter", "type":"hidden", "value": login});

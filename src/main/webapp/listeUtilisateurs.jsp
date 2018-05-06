@@ -16,7 +16,7 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="JS/mesAmis.js"></script>
-
+    <link href="CSS/home.css" rel="stylesheet">
     <link href="CSS/miageNav.css" rel="stylesheet" type="text/css">
     <title>Liste des Utilisateurs</title>
 </head>

@@ -185,7 +185,7 @@ public class LoginDao {
             System.out.println(loginBean.getLogin()+ " "+date_connection);
 
             if (date_connection != null) {
-                if (!date_connection.equals("null")) {
+                if (!date_connection.equals("En ligne")) {
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT, Locale.FRANCE);
                     LocalDateTime localDateTime = LocalDateTime.parse(date_connection, formatter);
                     System.out.println(localDateTime.toString());
@@ -220,7 +220,7 @@ public class LoginDao {
         try {
             Connection con = ConnectionProvider.getCon();
 
-            PreparedStatement ps = con.prepareStatement("update utilisateur set connecter = 1, date_connection = null where login = ?");
+            PreparedStatement ps = con.prepareStatement("update utilisateur set connecter = 1 where login = ?");
 
             ps.setString(1, login);
 

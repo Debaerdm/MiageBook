@@ -25,10 +25,10 @@
             </div>
             <ul class="nav navbar-nav">
                 <li class="active" ><a href="myindex.jsp">Home Page</a></li>
-                <li class="active" ><a href="listeUtilisateurs.jsp">Liste des utilisateurs</a></li>
-                <li class="active" ><a href="profile.jsp">Mes amis</a></li>
-                <li class="active" ><a href="publierStatus.jsp">Publier un status</a></li>
-                <li class="active" ><a href="monFeed.jsp">Mon Feed</a></li>
+                <li><a href="listeUtilisateurs.jsp">Liste des utilisateurs</a></li>
+                <li><a href="profile.jsp">Mes amis</a></li>
+                <li><a href="publierStatus.jsp">Publier un status</a></li>
+                <li><a href="monFeed.jsp">Mon Feed</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <%
