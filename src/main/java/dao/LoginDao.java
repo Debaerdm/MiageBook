@@ -45,7 +45,8 @@ public class LoginDao {
             ResultSet rs = ps.executeQuery();
             if(rs.next()) {
 
-                if(BCrypt.checkpw(password, rs.getString(2))) {
+                if(password.equals(rs.getString(2))){
+               // if(BCrypt.checkpw(password, rs.getString(2))) {
 
                     bean = new LoginBean();
 
@@ -135,10 +136,17 @@ public class LoginDao {
 
         Connection con = ConnectionProvider.getCon();
         try {
+
+            System.out.println("" +
+                    "SELECT login, nom, prenom, connecter from Utilisateur where login in " +
+                    "(select User2 from Amis where User1 = '" +login + "') or login in " +
+                    "(select User1 from Amis where User2 = '" +login + "');");
+
+
             PreparedStatement ps = con.prepareStatement("" +
                     "SELECT login, nom, prenom, connecter from Utilisateur where login in " +
-                    "(select User2 from Amis where User1 = 'Debaerdm') or login in " +
-                    "(select User1 from Amis where User2 = 'Debaerdm');");
+                    "(select User2 from Amis where User1 = '" +login + "') or login in " +
+                    "(select User1 from Amis where User2 = '" +login + "');");
 
             //ps.setString(1,login);
 
