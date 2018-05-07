@@ -2,8 +2,14 @@ package dao;
 
 import bean.CommentaireBean;
 import bean.LoginBean;
+import bean.StatusBean;
 import dao.Provider.ConnectionProvider;
 
+import javax.imageio.ImageIO;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,7 +30,7 @@ public class CommentaireDao {
         try {
             Connection connection = ConnectionProvider.getCon();
 
-            PreparedStatement preparedStatement = connection.prepareStatement("select id, texte, date_publication, login_proprietaire from commentaire where id_status = ? ");
+            PreparedStatement preparedStatement = connection.prepareStatement("select id, texte, date, login_proprietaire from commentaire where id_status = ? ");
             preparedStatement.setLong(1, idStatus);
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -47,6 +53,7 @@ public class CommentaireDao {
                     throw new SQLException("Erreur");
                 }
 
+                commentaireBean.setId_Status(idStatus);
                 commentaireBeans.add(commentaireBean);
             }
         } catch (SQLException e) {
@@ -54,5 +61,31 @@ public class CommentaireDao {
         }
 
         return commentaireBeans;
+    }
+
+    public static boolean addCommentaire(CommentaireBean commentaireBean) {
+        boolean status = false;
+
+        try {
+            Connection connection = ConnectionProvider.getCon();
+
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into commentaire(texte, date, login_proprietaire, id_status) values(?,?,?,?)");
+            preparedStatement.setString(1, commentaireBean.getTexte());
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT, Locale.FRANCE);
+            String date = formatter.format(commentaireBean.getDate());
+
+            preparedStatement.setString(2, date);
+
+            preparedStatement.setString(3, commentaireBean.getLoginBean().getLogin());
+
+            preparedStatement.setLong(4, commentaireBean.getId_Status());
+
+            status = (preparedStatement.executeUpdate() > 0);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return status;
     }
 }

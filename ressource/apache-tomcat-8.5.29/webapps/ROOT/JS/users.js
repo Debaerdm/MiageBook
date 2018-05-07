@@ -24,10 +24,3 @@ function setAttributes(el, attrs) {
     }
 }
 
-var login = document.getElementById("login").value;
-var nom = document.getElementById("nom").value;
-var prenom = document.getElementById("prenom").value;
-var email = document.getElementById("email").value;
-var connecter = document.getElementById("connecter").value;
-var date_connection = document.getElementById("date_connection").value;
-

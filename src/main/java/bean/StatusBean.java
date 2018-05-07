@@ -13,7 +13,6 @@ public class StatusBean implements Serializable {
     private BufferedImage image;
     private LocalDateTime date;
     private LoginBean loginBean;
-    private List<CommentaireBean> commentaireBeanList;
 
     public long getId() {
         return id;
@@ -61,13 +60,5 @@ public class StatusBean implements Serializable {
 
     public void setLoginBean(LoginBean loginBean) {
         this.loginBean = loginBean;
-    }
-
-    public List<CommentaireBean> getCommentaireBeanList() {
-        return commentaireBeanList;
-    }
-
-    public void setCommentaireBeanList(List<CommentaireBean> commentaireBeanList) {
-        this.commentaireBeanList = commentaireBeanList;
     }
 }

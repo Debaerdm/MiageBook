@@ -50,7 +50,7 @@
                         profilLink.value = 'Voir le profile';
 
                         const form = document.createElement("form");
-                        setAttributes(form, {"onsubmit":"return confirm('Etes-vous sur ?')", "action": "/${pageContext.request.contextPath}/addfriendservice", "method": "post" });
+                        setAttributes(form, {"onsubmit":"return confirm('Etes-vous sur ?')", "action": "/addfriendservice", "method": "post" });
                         if (login !== document.getElementById("login").value) {
                             const buttonSubmit = document.createElement("button");
                             buttonSubmit.innerHTML = "Ajouter à mes amis";

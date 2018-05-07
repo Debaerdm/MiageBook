@@ -9,6 +9,7 @@ public class CommentaireBean implements Serializable {
     private String texte;
     private LocalDateTime date;
     private LoginBean loginBean;
+    private long id_Status;
 
     public long getId() {
         return id;
@@ -40,5 +41,13 @@ public class CommentaireBean implements Serializable {
 
     public void setLoginBean(LoginBean loginBean) {
         this.loginBean = loginBean;
+    }
+
+    public long getId_Status() {
+        return id_Status;
+    }
+
+    public void setId_Status(long id_Status) {
+        this.id_Status = id_Status;
     }
 }

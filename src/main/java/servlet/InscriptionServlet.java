@@ -36,12 +36,16 @@ public class InscriptionServlet extends HttpServlet {
             } else {
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/inscription.jsp");
                 PrintWriter out = resp.getWriter();
-                out.println("<div class=\"alert alert-danger fade in\">\n" +
-                        " <strong> Danger ! </strong> Erreur.\n </div>");
+                out.println("<div class=\"alert alert-danger alert-dismissible fade show\">\n" +
+                        " <strong> Danger ! </strong> Inscription erreur.\n </div>");
                 rd.include(req, resp);
             }
         } catch (Throwable throwable) {
-            throwable.printStackTrace();
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/inscription.jsp");
+            PrintWriter out = resp.getWriter();
+            out.println("<div class=\"alert alert-danger alert-dismissible fade show\">\n" +
+                    " <strong> Danger ! </strong> Inscription erreur.\n </div>");
+            rd.include(req, resp);
         }
 
     }

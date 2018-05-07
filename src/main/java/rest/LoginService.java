@@ -14,7 +14,6 @@ public class LoginService {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Response loginExist(String login) {
-        System.out.println(login);
         if (login.length() > 3 && login.length() < 17 && LoginDao.exist(login)) {
             return Response.status(Response.Status.OK).entity("Success").build();
         }

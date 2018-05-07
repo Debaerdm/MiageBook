@@ -38,7 +38,7 @@ public class LogoutServlet extends HttpServlet {
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/myindex.jsp");
             PrintWriter out = resp.getWriter();
             out.println("<div class=\"alert alert-danger fade in\">\n" +
-                    " <strong> Danger ! </strong> Erreur.\n </div>");
+                    " <strong> Danger ! </strong> Erreur sur la déconnexion.\n </div>");
             rd.include(req, resp);
         }
     }

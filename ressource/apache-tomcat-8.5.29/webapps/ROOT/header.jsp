@@ -9,10 +9,12 @@
 
 <header>
     <script>
-        $('.nav ul li a').click(function() {
-            $('li a').removeClass("active");
-            $(this).addClass("active");
-        });
+        $(document).ready(function() {
+            // get current URL path and assign 'active' class
+            let pathname = window.location.pathname;
+            console.log(pathname);
+            $('.nav > li > a[href="'+pathname+'"]').parent().addClass('active');
+        })
     </script>
 
     <nav class="navbar navbar-inverse">
@@ -24,11 +26,11 @@
                 </a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active" ><a href="myindex.jsp">Home Page</a></li>
-                <li><a href="listeUtilisateurs.jsp">Liste des utilisateurs</a></li>
-                <li><a href="profile.jsp">Mes amis</a></li>
-                <li><a href="publierStatus.jsp">Publier un status</a></li>
-                <li><a href="monFeed.jsp">Mon Feed</a></li>
+                <li><a href="/myindex.jsp">Home Page</a></li>
+                <li><a href="/listeUtilisateurs.jsp">Liste des utilisateurs</a></li>
+                <li><a href="/profile.jsp">Mes amis</a></li>
+                <li><a href="/publierStatus.jsp">Publier un status</a></li>
+                <li><a href="/monFeed.jsp">Mon Feed</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <%
@@ -38,10 +40,6 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="profile.jsp" role="button" aria-haspopup="true" aria-expanded="false">
                         <span class="glyphicon glyphicon-user"><strong> <%= currentUser.getLogin() %> </strong></span>
                     </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#"> Mes amis </a>
-                        <a class="dropdown-item" href="#"> Liste des membres </a>
-                    </div>
                 </li>
                 <li><a href="${pageContext.request.contextPath}/logoutservice?login=<%= currentUser.getLogin() %>"><span class="glyphicon glyphicon-log-in"></span> Déconnexion </a></li>
                 <% } else { %>

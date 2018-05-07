@@ -9,11 +9,11 @@
 
 <html>
 <head>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="CSS/profile.css" rel="stylesheet">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="JS/users.js"></script>
     <link href="CSS/home.css" rel="stylesheet">
@@ -50,7 +50,7 @@
                         profilLink.value = 'Voir le profile';
 
                         const form = document.createElement("form");
-                        setAttributes(form, {"onsubmit":"return confirm('Etes-vous sur ?')", "action": "/deletefriendservice", "method": "post" });
+                        setAttributes(form, {"onsubmit":"return confirm('Etes-vous sur ?')", "action": "/addfriendservice", "method": "post" });
                         if (login !== document.getElementById("login").value) {
                             const buttonSubmit = document.createElement("button");
                             buttonSubmit.innerHTML = "Ajouter à mes amis";

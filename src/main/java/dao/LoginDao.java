@@ -196,8 +196,6 @@ public class LoginDao {
 
             String date_connection = rs.getString(5);
 
-            System.out.println(loginBean.getLogin());
-
             if (date_connection != null) {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT, Locale.FRANCE);
                 LocalDateTime localDateTime = LocalDateTime.parse(date_connection, formatter);
@@ -224,6 +222,21 @@ public class LoginDao {
             e.printStackTrace();
         }
 
+        return status;
+    }
+
+    public static boolean addFriend(String login, String friend) {
+        boolean status = false;
+        try {
+            Connection con = ConnectionProvider.getCon();
+            PreparedStatement ps = con.prepareStatement("insert into amis values(?,?)");
+            ps.setString(1, login);
+            ps.setString(2, friend);
+
+            status = (ps.executeUpdate() > 0);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return status;
     }
 

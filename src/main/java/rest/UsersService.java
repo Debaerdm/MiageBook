@@ -25,7 +25,6 @@ public class UsersService {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/allusers/{login}")
     public Response getAllFriends(@PathParam("login") String login){
-        System.out.println("Les amis de : " + login);
         List<LoginBean> loginBeansListFriends = LoginDao.getAllFriends(login);
         GenericEntity<List<LoginBean>> entity = new GenericEntity<List<LoginBean>>(loginBeansListFriends){};
 

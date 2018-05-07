@@ -9,13 +9,14 @@
 
 <html>
 <head>
+
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="CSS/profile.css" rel="stylesheet">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="JS/users.js"></script>
+    <!--<script src="JS/users.js"></script>-->
     <link href="CSS/home.css" rel="stylesheet">
     <link href="CSS/miageNav.css" rel="stylesheet" type="text/css">
 
@@ -43,7 +44,7 @@
             <h2 style="color: #ffc107">Nouveau Status</h2>
             <div class="panel-body">
                 <div class="status-upload nopaddingbtm">
-                    <form action="${pageContext.request.contextPath}/statusservice" method="post" id="fileForm" role="form">
+                        <form action="${pageContext.request.contextPath}/statusservice" method="post" id="fileForm" role="form">
                         <% if (currentUser != null) {
                         %>
                         <input class="form-control" type="hidden" name="login" id="login" value="<%=currentUser.getLogin()%>">

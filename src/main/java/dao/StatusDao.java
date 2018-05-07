@@ -21,13 +21,20 @@ import static dao.Provider.Provider.DATE_FORMAT;
 
 public class StatusDao {
 
-    public static List<StatusBean> getAllStatus() {
+    public static List<StatusBean> getAllStatus(String login) {
         List<StatusBean> statusBeans = new ArrayList<>();
 
         try {
             Connection connection = ConnectionProvider.getCon();
 
-            PreparedStatement preparedStatement = connection.prepareStatement("select id,titre,texte,image,date_publication, login from status");
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "select * from status where login_proprietaire in " +
+                    "(select user1 from amis where user2 = ?) or login_proprietaire in " +
+                    "(select user2 from amis where user1 = ?) or login_proprietaire = ? order by date_publication desc LIMIT 10");
+
+            preparedStatement.setString(1, login);
+            preparedStatement.setString(2, login);
+            preparedStatement.setString(3, login);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -46,7 +53,7 @@ public class StatusDao {
         try {
             Connection connection = ConnectionProvider.getCon();
 
-            PreparedStatement preparedStatement = connection.prepareStatement("select id,titre,texte,image,date_publication, login from status where login_proprietaire = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("select id,titre,texte,image,date_publication, login_proprietaire from status where login_proprietaire = ? order by date_publication desc");
             preparedStatement.setString(1, login);
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -68,14 +75,14 @@ public class StatusDao {
             statusBean.setTitre(resultSet.getString(2));
             statusBean.setTexte(resultSet.getString(3));
 
-            Blob blob = resultSet.getBlob(4);
+            /*Blob blob = resultSet.getBlob(4);
 
             if (blob != null) {
                 InputStream in = blob.getBinaryStream();
                 BufferedImage image = ImageIO.read(in);
 
                 statusBean.setImage(image);
-            }
+            }*/
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT, Locale.FRANCE);
             statusBean.setDate(LocalDateTime.parse(resultSet.getString(5), formatter));

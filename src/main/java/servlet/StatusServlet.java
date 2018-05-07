@@ -31,10 +31,6 @@ public class StatusServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-
-
-
-
             StatusBean statusBean = new StatusBean();
                 LoginBean loginBean = new LoginBean();
                 loginBean.setLogin(req.getParameter("login"));
@@ -44,17 +40,25 @@ public class StatusServlet extends HttpServlet {
                 statusBean.setDate(LocalDateTime.now());
 
                 if (StatusDao.addStatus(statusBean)) {
-                    resp.sendRedirect("/publierStatus.jsp");
-                } else {
-                    RequestDispatcher rd = getServletContext().getRequestDispatcher(req.getContextPath());
+                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/publierStatus.jsp");
                     PrintWriter out = resp.getWriter();
-                    out.println("<div class=\"alert alert-danger fade in\">\n" +
-                            " <strong> Danger ! </strong> Login ou mot de passe incorrect.\n </div>");
+                    out.println("<div class=\"alert alert-success alert-dismissible fade show\">\n" +
+                            " <strong> Well done ! </strong> Status publie.\n </div>");
+                    rd.include(req, resp);
+                } else {
+                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/publierStatus.jsp");
+                    PrintWriter out = resp.getWriter();
+                    out.println("<div class=\"alert alert-danger alert-dismissible fade show\">\n" +
+                            " <strong> Danger ! </strong> Impossible d'ajouter ce status.\n </div>");
                     rd.include(req, resp);
                 }
 
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
+        } catch (Exception e) {
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/publierStatus.jsp");
+            PrintWriter out = resp.getWriter();
+            out.println("<div class=\"alert alert-danger alert-dismissible fade show\">\n" +
+                    " <strong> Danger ! </strong> Impossible d'ajouter ce status.\n </div>");
+            rd.include(req, resp);
         }
     }
 }
