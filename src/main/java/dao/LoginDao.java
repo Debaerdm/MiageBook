@@ -160,8 +160,23 @@ public class LoginDao {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()){
-                AddLoginBean(beanListFriends, rs);
-            }
+
+                    LoginBean loginBean = new LoginBean();
+                    loginBean.setLogin(rs.getString(1));
+                    loginBean.setNom(rs.getString(2));
+                    loginBean.setPrenom(rs.getString(3));
+                    loginBean.setConnecter(rs.getInt(4));
+
+                    String date_connection = rs.getString(5);
+
+                    if (date_connection != null) {
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT, Locale.FRANCE);
+                        LocalDateTime localDateTime = LocalDateTime.parse(date_connection, formatter);
+                        loginBean.setDate_connection(localDateTime);
+                    }
+
+                     beanListFriends.add(loginBean);
+                }
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -198,9 +213,11 @@ public class LoginDao {
 
         try{
             Connection con = ConnectionProvider.getCon();
-            PreparedStatement ps = con.prepareStatement("DELETE from Amis where User1= ? AND User2 = ?");
+            PreparedStatement ps = con.prepareStatement("DELETE from Amis where (User1= ? AND User2 = ?) OR (User1= ? AND User2 = ?)");
             ps.setString(1, of);
             ps.setString(2, friend);
+            ps.setString(3, friend);
+            ps.setString(4, of);
 
             status = (ps.executeUpdate() > 0);
         } catch (SQLException e) {

@@ -31,7 +31,11 @@ public class StatusServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-                StatusBean statusBean = new StatusBean();
+
+
+
+
+            StatusBean statusBean = new StatusBean();
                 LoginBean loginBean = new LoginBean();
                 loginBean.setLogin(req.getParameter("login"));
                 statusBean.setLoginBean(loginBean);
@@ -40,7 +44,7 @@ public class StatusServlet extends HttpServlet {
                 statusBean.setDate(LocalDateTime.now());
 
                 if (StatusDao.addStatus(statusBean)) {
-                    resp.sendRedirect(req.getContextPath());
+                    resp.sendRedirect("/publierStatus.jsp");
                 } else {
                     RequestDispatcher rd = getServletContext().getRequestDispatcher(req.getContextPath());
                     PrintWriter out = resp.getWriter();

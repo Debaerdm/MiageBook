@@ -8,25 +8,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="bean.LoginBean" %>
 
 <html>
+
 <head>
+    <!--<script src="JS/users.js"></script>-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="JS/users.js"></script>
     <link href="CSS/profile.css" rel="stylesheet">
     <link href="CSS/miageNav.css" rel="stylesheet" type="text/css">
     <link href="CSS/home.css" rel="stylesheet">
 
-
     <script>
+
         $(document).ready(getUsers());
 
         function getUsers() {
             $.ajax({
                 type: 'GET',
-                url: '/rest/users/allusers/Debaerdm',
+                url: '/rest/users/allusers/' + current_user,
                 dataType: 'json',
                 success: function(json) {
                     console.log(JSON.stringify(json));
@@ -45,7 +45,7 @@
 
                         $("#friends").append("<div class=\"media\" style=\"border: dotted 1px \">\n" +
                             "<a href=\"profile.jsp#"+login+"\">Voir le profil</a>" +
-                            "                        <form onsubmit=\"return confirm('Etes-vous sur ?')\" action=\"\\suppressionAmisManager\" method=\"post\">\n" +
+                            "                        <form onsubmit=\"return confirm('Etes-vous sur ?')\" action=\"${pageContext.request.contextPath}/deletefriendservice\" method=\"post\">\n" +
                             "                            <input id='supprAmis' name='suppr' type=\"hidden\" value='" + login + "'>\n" +
                             "                            <input id='" + cpt + "' name='scroll' type=\"hidden\" value='"+ cpt +"'>\n" +
                             "                            <button class=\"btn btn-primary followbtn\" type=\"submit\">Supprimer</button>\n" +
@@ -76,7 +76,9 @@
 
     <title>Profile</title>
 </head>
+
 <%@include file="header.jsp"%>
+
 <body>
 
 <div class="jumbotron jumbotron-fluid">
