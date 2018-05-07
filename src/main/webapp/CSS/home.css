@@ -87,20 +87,9 @@ footer{
     max-height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
-    width: 65%;
-    float: left;
-    margin-left: 25px;
+    width: 100%;
     border-radius: 1px;
     border: 1px #6c757d;
-}
-
-.second-column {
-    max-height: 60%;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    width: 30%;
-    float: right;
-    margin-right: 25px;
 }
 
 ::-webkit-scrollbar {

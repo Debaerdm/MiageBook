@@ -11,13 +11,13 @@
 <head>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="CSS/profile.css" rel="stylesheet">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="JS/mesAmis.js"></script>
-
+    <script src="JS/users.js"></script>
+    <link href="CSS/profile.css" rel="stylesheet">
     <link href="CSS/miageNav.css" rel="stylesheet" type="text/css">
+    <link href="CSS/home.css" rel="stylesheet">
 
 
     <script>

@@ -62,6 +62,11 @@ public class LoginDao {
                     bean.setNom(rs.getString(3));
                     bean.setPrenom(rs.getString(4));
                     bean.setEmail(rs.getString(5));
+                    bean.setConnecter(rs.getInt(6));
+
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT, Locale.FRANCE);
+                    LocalDateTime localDateTime = LocalDateTime.parse((rs.getString(7)), formatter);
+                    bean.setDate_connection(localDateTime);
                 }
             }
         } catch(Exception e){
@@ -101,7 +106,7 @@ public class LoginDao {
         try {
             Connection con = ConnectionProvider.getCon();
 
-            PreparedStatement ps = con.prepareStatement("insert into utilisateur values(?,?,?,?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("insert into utilisateur values(?,?,?,?,?,?,?,?)");
 
             ps.setString(1, bean.getLogin());
             ps.setString(2, bean.getPassword());
@@ -109,7 +114,9 @@ public class LoginDao {
             ps.setString(4, bean.getPrenom());
             ps.setString(5, bean.getEmail());
             ps.setInt(6, bean.getConnecter());
-            ps.setString(7, null);
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT, Locale.FRANCE);
+            ps.setString(7, formatter.format(LocalDateTime.now()));
 
             status = (ps.executeUpdate() > 0);
         } catch (Exception e) {
@@ -136,18 +143,10 @@ public class LoginDao {
     }
 
     public static List<LoginBean> getAllFriends(String login){
-
-        System.out.println("dao : getAllFriends");
-
         List<LoginBean> beanListFriends = new ArrayList<>();
 
         Connection con = ConnectionProvider.getCon();
         try {
-
-            System.out.println("" +
-                    "SELECT login, nom, prenom, connecter from Utilisateur where login in " +
-                    "(select User2 from Amis where User1 = '" +login + "') or login in " +
-                    "(select User1 from Amis where User2 = '" +login + "');");
 
 
             PreparedStatement ps = con.prepareStatement("" +
@@ -182,15 +181,12 @@ public class LoginDao {
 
             String date_connection = rs.getString(5);
 
-            System.out.println(loginBean.getLogin()+ " "+date_connection);
+            System.out.println(loginBean.getLogin());
 
             if (date_connection != null) {
-                if (!date_connection.equals("En ligne")) {
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT, Locale.FRANCE);
-                    LocalDateTime localDateTime = LocalDateTime.parse(date_connection, formatter);
-                    System.out.println(localDateTime.toString());
-                    loginBean.setDate_connection(localDateTime);
-                }
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT, Locale.FRANCE);
+                LocalDateTime localDateTime = LocalDateTime.parse(date_connection, formatter);
+                loginBean.setDate_connection(localDateTime);
             }
 
             beanList.add(loginBean);

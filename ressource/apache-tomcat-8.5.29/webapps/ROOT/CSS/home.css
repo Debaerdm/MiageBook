@@ -84,17 +84,15 @@ footer{
 }
 
 .first-column {
-    max-height: 30%;
+    max-height: 100%;
     overflow-y: scroll;
-    width: 60%;
-    float: left;
-    margin-left: 50px;
+    overflow-x: hidden;
+    width: 100%;
+    border-radius: 1px;
+    border: 1px #6c757d;
 }
 
-.second-column {
-    max-height: 60%;
-    overflow-y: scroll;
-    width: 30%;
-    float: right;
-    margin-right: 25px;
+::-webkit-scrollbar {
+    display: none;
+    height: 100%;
 }

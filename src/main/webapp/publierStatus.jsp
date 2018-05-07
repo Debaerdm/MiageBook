@@ -15,7 +15,7 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="JS/mesAmis.js"></script>
+    <script src="JS/users.js"></script>
     <link href="CSS/home.css" rel="stylesheet">
     <link href="CSS/miageNav.css" rel="stylesheet" type="text/css">
 
@@ -24,6 +24,10 @@
 </head>
 <%@include file="header.jsp"%>
 <body>
+<%
+    if (currentUser == null) {
+        response.sendRedirect("/login.jsp");
+    } %>
 
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
@@ -40,6 +44,12 @@
             <div class="panel-body">
                 <div class="status-upload nopaddingbtm">
                     <form action="${pageContext.request.contextPath}/statusservice" method="post" id="fileForm" role="form">
+                        <% if (currentUser != null) {
+                        %>
+                        <input class="form-control" type="hidden" name="login" id="login" value="<%=currentUser.getLogin()%>">
+                        <%
+                            }
+                        %>
                         <div class="form-group">
                             <label for="titre"><span class="req"></span><strong> Titre : </strong></label>
                             <input class="form-control" type="text" name="titre" id ="titre" placeholder="Titre" required autofocus/>
@@ -52,7 +62,7 @@
                         <ul class="nav nav-pills pull-left ">
                             <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="glyphicon glyphicon-picture"></i></a></li>
                         </ul>
-                        <button type="submit" class="btn btn-success pull-right"> Share </button>
+                        <button type="submit" class="btn btn-success pull-right"> Publier </button>
                     </form>
                 </div>
                 <!-- Status Upload  -->

@@ -10,9 +10,11 @@
         <link href="CSS/home.css" rel="stylesheet" type="text/css">
         <link href="CSS/profile.css" rel="stylesheet" type="text/css">
         <link href="CSS/miageNav.css" rel="stylesheet" type="text/css">
-
+        <script src="JS/users.js"></script>
         <script>
-            $(document).ready(getUsers());
+            $(document).ready(function () {
+                    getUsers();
+            });
 
             function getUsers() {
                 $.ajax({
@@ -27,23 +29,29 @@
                             myNode.removeChild(myNode.firstChild);
                         }
 
-                        $.each(json, function(idx, obj){
+                        $.each(json, function(idx, obj) {
                             let login = obj.login;
                             let nom = obj.nom;
                             let prenom = obj.prenom;
                             let connecter = obj.connecter;
 
-                            $("#allUsers").append(
-                                "<a href=\"profile.jsp#"+login+"\" class=\"list-group-item list-group-item-action list-group-item-"+((connecter !== 0) ? "success" : "light")
-                                + "\"> " + nom + " " + prenom +"</a>");
+                            if (login !== document.getElementById("login").value) {
+                                $("#allUsers").append(
+                                    "<a href=\"profile.jsp#" + login + "\" class=\"list-group-item list-group-item-action list-group-item-" + ((connecter !== 0) ? "success" : "light")
+                                    + "\"> " + nom + " " + prenom + "</a>");
+                             }
                         });
                     }
                 }).complete(function() {
-                    setTimeout(function () {
-                        getUsers();
-                    }, 10000);
+                    timer1();
                 })
             }
+
+            window.onhashchange = function () {
+                clearTimeout(timer1);
+            };
+
+            let timer1 = setTimeout(function () {getUsers();}, 10000);
         </script>
         <title>MiageBook</title>
     </head>
@@ -53,8 +61,18 @@
             <%
                 if (currentUser == null) {
                     response.sendRedirect("/login.jsp");
+                } else {
+            %>
+            <input type="hidden" id="login" value="<%=currentUser.getLogin()%>">
+            <input type="hidden" id="nom" value="<%=currentUser.getNom()%>">
+            <input type="hidden" id="prenom" value="<%=currentUser.getPrenom()%>">
+            <input type="hidden" id="email" value="<%=currentUser.getEmail()%>">
+            <input type="hidden" id="connecter" value="<%=currentUser.getConnecter()%>">
+            <input type="hidden" id="date_connection" value="<%=currentUser.getDate_connection()%>">
+            <%
                 }
             %>
+
             <div class="jumbotron jumbotron-fluid">
                 <div class="container">
                     <h1> Bienvenue sur MiageBook </h1>
@@ -150,11 +168,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div id="inner-second" class="second-column">
-                        <div class="col">
-                         <div id="allUsers" class="list-group"></div>
                         </div>
                     </div>
                 </div>
