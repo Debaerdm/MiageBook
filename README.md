@@ -27,4 +27,13 @@ Le zip contient le code du projet ainsi que un petit compte-rendu.
 ### Pour lancer le projet :
 
 	Notre projet se lance plus facilement dans un IDE. Il faut configurer le run pour ajouter le serveur tomcat. 
-	Il faut que notre fichier data.db soit dans le repertoire /bin de tomcat.
+	Il faut que notre fichier data.db (qui contient nos données) soit dans le repertoire /bin de tomcat.
+
+	Pour tester vous pouvez utiliser les utilisateurs suivants qui sont en base si vous le souhaitez : 
+
+		login : Debaerdm
+		mot de passe : Test
+
+
+		login : AlexandreDupriez
+		mot de passe : Test
