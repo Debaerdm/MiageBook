@@ -106,7 +106,7 @@ public class LoginDao {
         try {
             Connection con = ConnectionProvider.getCon();
 
-            PreparedStatement ps = con.prepareStatement("insert into utilisateur values(?,?,?,?,?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("insert into utilisateur values(?,?,?,?,?,?,?)");
 
             ps.setString(1, bean.getLogin());
             ps.setString(2, bean.getPassword());

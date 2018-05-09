@@ -11,6 +11,9 @@ Notre réseau social MiageBook contient : Une page d'inscription, une page d'aut
 
 Le zip contient le code du projet ainsi que un petit compte-rendu. 
 
+On utilise une base de donnée local type sqlite, la base de donnée ce trouve dans le dossier ressource/tomcat/bin et s'apelle data.db
+
+Il faut le mettre dans le dossier du tomcat utiliser sur un projet dans le bin du tomcat.
 
 ### Outils et technos utilisés
 
